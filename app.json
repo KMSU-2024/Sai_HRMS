@@ -1,0 +1,41 @@
+{
+  "id": "80d2b1c6-052b-4415-be34-1eaaa32dfdca",
+  "name": "HRMS Module",
+  "publisher": "Default publisher",
+  "version": "1.0.0.0",
+  "runtime": "9.0",
+  "target": "OnPrem",
+  "platform": "20.0.42653.43007",
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "dependencies": [
+    {
+      "id": "9950e2b6-cbbc-47bc-a4f1-d7d4d6a28b3e",
+      "name": "InfrastuctureManagement",
+      "version": "1.0.0.0",
+      "publisher": "Default publisher"
+    },
+    {
+      "id": "5a00b86e-b7c2-4faf-8a88-aa39b5c0c8b5",
+      "name": "SLCM and Library",
+      "version": "1.0.0.1",
+      "publisher": "UNIKUL"
+    },
+    {
+      "id": "c1335042-3002-4257-bf8a-75c898ccb1b8",
+      "name": "Application",
+      "version": "20.0.0.0",
+      "publisher": "Microsoft"
+    }
+  ],
+  "propagateDependencies": true,
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 99999999
+    }
+  ]
+}

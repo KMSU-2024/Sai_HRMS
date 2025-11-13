@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Your own server",
+            "type": "al",
+            "request": "launch",
+            "environmentType": "OnPrem",
+            "server": "http://localhost:8080/DTETDEV3/",
+            "serverInstance": "DTETDLVP",
+            "authentication": "UserPassword",
+            "breakOnError": "All",
+            "breakOnRecordWrite": "None",
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "port":10104,
+            "tenant": "default",
+            
+           
+            
+
+        
+            
+        
+        }// Use Ctrl+Space to trigger IntelliSense and get assistance on the supported configurations for AL development.
+    ]
+}
+
