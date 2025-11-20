@@ -11,19 +11,19 @@ page 33065744 "Disciplinary History Card"
         {
             group(GroupName)
             {
-                field("Entry No";"Entry No")
+                field("Entry No"; "Entry No")
                 {
                     ApplicationArea = All;
                 }
-                field("HRMS ID";"HRMS ID")
+                field("HRMS ID"; "HRMS ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Employee Name";Name)
+                field("Employee Name"; Name)
                 {
                     ApplicationArea = All;
                 }
-                field(Designation;Designation)
+                field(Designation; Designation)
                 {
                     ApplicationArea = All;
                 }
@@ -32,7 +32,7 @@ page 33065744 "Disciplinary History Card"
                 {
                     ApplicationArea = All;
                 } */
-                field("Disciplinary Charges File Name";Rec."Disciplinary Charges File Name")
+                field("Disciplinary Charges File Name"; Rec."Disciplinary Charges File Name")
                 {
                     ApplicationArea = All;
                 }
@@ -41,37 +41,42 @@ page 33065744 "Disciplinary History Card"
                 //     ApplicationArea = All;
                 // }
                 // End Anmol
-                field("Disciplinary CaseLetter No";"Disciplinary CaseLetter No")
+
+                field("Disciplinary CaseLetter No"; "Disciplinary CaseLetter No")
                 {
                     ApplicationArea = All;
                 }
-                field("Disciplinary CaseDate";"Disciplinary CaseDate")
+                field("Disciplinary CaseDate"; "Disciplinary CaseDate")
                 {
                     ApplicationArea = All;
                 }
-                field("Disciplinary CasesStatus";"Disciplinary CaseStatus")
+                field("Disciplinary CasesStatus"; "Disciplinary CaseStatus")
                 {
                     ApplicationArea = All;
                 }
-                field("WhetherPlaced under suspension";"WhetherPlaced under suspension")
+                field("WhetherPlaced under suspension"; "WhetherPlaced under suspension")
                 {
                     ApplicationArea = All;
 
-                    trigger Onvalidate()var myInt: Integer;
+                    trigger Onvalidate()
+                    var
+                        myInt: Integer;
                     begin
                         if "Whether reinstated" = true then Error('You Can not tick this boolean because Reinstated boolean is already true. If you want to tick this boolean then please untick Reinstated boolean.');
                     end;
                 }
-                field("Whether reinstated";"Whether reinstated")
+                field("Whether reinstated"; "Whether reinstated")
                 {
                     ApplicationArea = All;
 
-                    trigger onvalidate()var myInt: Integer;
+                    trigger onvalidate()
+                    var
+                        myInt: Integer;
                     begin
                         if "WhetherPlaced under suspension" then Error('You Can not tick this boolean because suspension boolean is already true. If you want to tick this boolean then please untick suspension boolean.');
                     end;
                 }
-                field(VigilanceCasePending;VigilanceCasePending) //anmol
+                field(VigilanceCasePending; VigilanceCasePending)//anmol
                 {
                     ApplicationArea = all;
                 }
@@ -86,10 +91,12 @@ page 33065744 "Disciplinary History Card"
             {
                 ApplicationArea = All;
 
-                trigger OnAction()begin
+                trigger OnAction()
+                begin
                 end;
             }
         }
     }
-    var myInt: Integer;
+    var
+        myInt: Integer;
 }

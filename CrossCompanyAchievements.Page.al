@@ -20,8 +20,8 @@ page 33065500 "CrossCompanyAchievements" //SS03NOV
 
             {
 
-                field("Company Name"; Rec."Company Name") { ApplicationArea = All; }
-                field("Archive Entry No."; Rec."Archive Entry No.") { ApplicationArea = All; }
+                field("Company Name"; Rec."Company Name") { Caption = 'Institue'; ApplicationArea = All; }
+                field("Archive Entry No."; Rec."Archive Entry No.") { caption = ' institue'; ApplicationArea = All; }
                 field("HRMS ID"; Rec."HRMS ID") { ApplicationArea = All; }
                 field("Employee Name"; Rec."Employee Name") { ApplicationArea = All; }
                 field(Designation; Rec.Designation) { ApplicationArea = All; }

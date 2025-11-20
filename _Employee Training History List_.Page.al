@@ -15,50 +15,59 @@ page 33065747 "Employee Training History List"
         {
             repeater(GroupName)
             {
-                field("Entry No";rec."Entry No")
+                field("Entry No"; rec."Entry No")
                 {
                     ApplicationArea = All;
                 }
-                field("HRMS ID";rec."HRMS ID")
+                field("HRMS ID"; rec."HRMS ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Employee Name";rec.Name)
+                field("Employee Name"; rec.Name)
                 {
                     ApplicationArea = All;
                 }
-                field(Designation;rec.Designation)
+                field(Designation; rec.Designation)
                 {
                     ApplicationArea = All;
                 }
-                field("Type Of Training";rec."Type Of Training")
+
+                field("Type Of Training"; rec."Type Of Training")
                 {
                     ApplicationArea = All;
                 }
-                field("Traing Course Title";rec."Course Name")
+                field("Certificate FileName"; "Certificate FileName")//megha 18-11-25
+                {
+                    Caption = 'Application File Name';
+
+                    ApplicationArea = all;
+                }
+                field("Traing Course Title"; rec."Course Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Training Starting Date";rec."Start Date")
+                field("Training Starting Date"; rec."Start Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Training Ending Date";rec.EndDate)
+                field("Training Ending Date"; rec.EndDate)
                 {
                     ApplicationArea = All;
                 }
-                field("Duration Of Training";rec."Duration Of Training")
+                field("Duration Of Training"; rec."Duration Of Training")
                 {
                     ApplicationArea = All;
                 }
-                field("Conducted By";rec."Conducted By")
+                field("Conducted By"; rec."Conducted By")
                 {
                     ApplicationArea = All;
                 }
-                field("Training Location";rec."Training Location")
+
+                field("Training Location"; rec."Training Location")
                 {
                     ApplicationArea = All;
                 }
+
             }
         }
         area(Factboxes)
@@ -99,10 +108,12 @@ page 33065747 "Employee Training History List"
                 Promoted = true;
                 PromotedCategory = Process;
 
-                trigger OnAction()var FilemngCU: Codeunit "File Management";
-                TempBlob: Codeunit "Temp Blob";
-                InstreamVar: InStream;
-                OutstreamVar: OutStream;
+                trigger OnAction()
+                var
+                    FilemngCU: Codeunit "File Management";
+                    TempBlob: Codeunit "Temp Blob";
+                    InstreamVar: InStream;
+                    OutstreamVar: OutStream;
                 begin
                     Rec.CalcFields(Certificate); // your BLOB field
                     if Rec.Certificate.HasValue then begin

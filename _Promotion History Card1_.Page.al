@@ -14,37 +14,37 @@ page 33065497 "Promotion History Card1" //SS07OCT c
         {
             repeater(GroupName)
             {
-                field("Entry No";Rec."Entry No")
+                field("Entry No"; Rec."Entry No")
                 {
                     ApplicationArea = All;
                 }
-                field("HRMS ID";Rec."HRMS ID")
+                field("HRMS ID"; Rec."HRMS ID")
                 {
                     ApplicationArea = All;
                 }
-                field("From Designation";Rec."From Designation")
+                field("From Designation"; Rec."From Designation")
                 {
                     ApplicationArea = All;
                 }
-                field("To Designation";Rec."To Designation")
+                field("To Designation"; Rec."To Designation")
                 {
                     ApplicationArea = All;
                 }
-                field("Promotion Order Date";Rec."Promotion Order Date")
+                field("Promotion Order Date"; Rec."Promotion Order Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Letter No";Rec."Letter No")
+                field("Letter No"; Rec."Letter No")
                 {
                     ApplicationArea = All;
                 }
                 //      field("Promotion Order Issuing Authority"; Rec."Promotion Order Issuing Authority") { ApplicationArea = All;   }
                 // (g) Modified fields
-                field("Modified By";Rec."Modified By")
+                field("Modified By"; Rec."Modified By")
                 {
                     ApplicationArea = All;
                 }
-                field("Modified DateTime";Rec."Modified Date Time")
+                field("Modified DateTime"; Rec."Modified Date Time")
                 {
                     ApplicationArea = All;
                 }
@@ -97,22 +97,25 @@ page 33065497 "Promotion History Card1" //SS07OCT c
                 ApplicationArea = All;
                 Image = Export;
 
-                trigger OnAction()var InStr: InStream;
-                ToFileName: Text;
+                trigger OnAction()
+                var
+                    InStr: InStream;
+                    ToFileName: Text;
                 begin
                     Rec.CalcFields("Upload Promotion Order");
                     if Rec."Upload Promotion Order".HasValue then begin
                         Rec."Upload Promotion Order".CreateInStream(InStr);
-                        if rec."Promotion Order File Name" <> '' then ToFileName:=Rec."Promotion Order File Name"
+                        if rec."Promotion Order File Name" <> '' then
+                            ToFileName := Rec."Promotion Order File Name"
                         else
-                            ToFileName:='DowmloadDocument.pdf';
+                            ToFileName := 'DowmloadDocument.pdf';
                         DownloadFromStream(InStr, 'Download Document', '', '', ToFileName);
                     end
                     else
                         Message('No document found for this record.');
                 end;
             }
-        /*     action(DownloadDocument)
+            /*     action(DownloadDocument)
                      {
                          ApplicationArea = All;
                          Image = Download;
@@ -134,5 +137,6 @@ page 33065497 "Promotion History Card1" //SS07OCT c
                      }*/
         }
     }
-    var TempBlob: Codeunit "Temp Blob";
+    var
+        TempBlob: Codeunit "Temp Blob";
 }

@@ -14,28 +14,28 @@ page 33065490 "Annual Performance History" //SS07OCT c
         {
             repeater(General)
             {
-                field("HRMS ID";Rec."HRMS ID")
+                field("HRMS ID"; Rec."HRMS ID")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the HRMS ID.';
                 }
-                field(Name;Rec.Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
                 }
-                field(Designation;Rec.Designation)
+                field(Designation; Rec.Designation)
                 {
                     ApplicationArea = All;
                 }
-                field(Department;Rec.Department)
+                field(Department; Rec.Department)
                 {
                     ApplicationArea = All;
                 }
-                field("Academic Year";Rec."Academic Year")
+                field("Academic Year"; Rec."Academic Year")
                 {
                     ApplicationArea = All;
                 }
-                field("Performance Appraisal Review";Rec."Performance Appraisal Review")
+                field("Performance Appraisal Review"; Rec."Performance Appraisal Review")
                 {
                     ApplicationArea = All;
                 }

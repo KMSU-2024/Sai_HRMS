@@ -1,5 +1,6 @@
 tableextension 33065862 userSetupExt1 extends "User Setup" //SS08OCT
 {
+
     fields
     {
         // Add changes to table fields here

@@ -22,7 +22,7 @@ table 33066439 "Employee Financial Upg Buffer" //SS03NOV
 
         {
 
-            Caption = 'Company Name';
+            Caption = 'Institute';
 
         }
 

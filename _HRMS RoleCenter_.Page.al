@@ -27,9 +27,10 @@ page 33065750 "HRMS RoleCenter"
                 ApplicationArea = all;
                 RunObject = Page "Financial Upg Application";
             }
-            action("Employee Transfer Relief Card")
+            action("Employee Transfer Relieve Card")
             {
                 ApplicationArea = all;
+                Caption = 'Employee Transfer Relieve Card';
                 RunObject = Page "Employee Transfer Relief Card";
             }
             action("Employee Transfer Joining Card")

@@ -17,59 +17,64 @@ page 33065743 "Staff Achivement History List"
         {
             repeater(GroupName)
             {
-                field("Entry No";rec."Entry No")
+                field("Entry No"; rec."Entry No")
                 { //ApplicationArea = All; 
                 }
-                field("HRMS ID";rec."HRMS ID")
+                field("HRMS ID"; rec."HRMS ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Employee Name";rec.Name)
+                field("Employee Name"; rec.Name)
                 {
                     ApplicationArea = All;
                 }
-                field(Designation;rec.Designation)
+                field(Designation; rec.Designation)
                 {
                     ApplicationArea = All;
                 }
-                field("Base Qualification";rec."Base Qualification")
+                field("Base Qualification"; rec."Base Qualification")
                 {
                     ApplicationArea = All;
                 }
-                field("Inservice Qualification. Upgradation";rec."Inservice Qua. Upgradation")
+                field("Inservice Qualification. Upgradation"; rec."Inservice Qua. Upgradation")
                 {
                     ApplicationArea = All;
                 }
-                field("In-service Qualification Details";rec."Inservise Qualification Detail")
+                field("In-service Qualification Details"; rec."Inservise Qualification Detail")
                 {
                     ApplicationArea = All;
                 }
-                field(Award;rec.Award)
+                field(Award; rec.Award)
                 {
                     ApplicationArea = All;
                 }
-                field("Award Details";rec."Award Details")
+                field("Award Details"; rec."Award Details")
                 {
                     ApplicationArea = All;
                 }
-                field("Achivement Remarks";rec."Achivement Remarks")
+                field("Achivement Remarks"; rec."Achivement Remarks")
                 {
                     ApplicationArea = All;
                 }
-                field("Academic Year";rec."Academic Year")
+                field("Academic Year"; rec."Academic Year")
                 {
                     ApplicationArea = All;
                 }
                 // SS07OCT (f) Modified fields
-                field("Modified By";Rec."Modified By")
+                field("Modified By"; Rec."Modified By")
                 {
                     ApplicationArea = All;
                 }
-                field("Modified DateTime";Rec."Modified Date Time")
+                field("Modified DateTime"; Rec."Modified Date Time")
                 {
                     ApplicationArea = All;
                 }
-            //SS07OCT
+                //SS07OCT
+                field("File Name"; rec."File Name")
+                {
+                    ApplicationArea = All;
+
+                }
             }
         }
         area(Factboxes)
@@ -87,7 +92,7 @@ page 33065743 "Staff Achivement History List"
                 ApplicationArea = All;
                 Image = EditLines;
                 RunObject = page "Staff Achivement History Card"; // Page 70548
-                RunPageLink = "Entry No"=field("Entry No");
+                RunPageLink = "Entry No" = field("Entry No");
             }
             // (a + e) Achievement History Action → open detailed Achievement History Card
             action(ViewHistory) //SS07OCT
@@ -96,8 +101,9 @@ page 33065743 "Staff Achivement History List"
                 ApplicationArea = All;
                 Image = History;
                 RunObject = page "Staff Ach History Arch List";
-                RunPageLink = "HRMS ID"=field("HRMS ID");
+                RunPageLink = "HRMS ID" = field("HRMS ID");
             }
         }
     }
 }
+

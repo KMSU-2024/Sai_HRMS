@@ -4,11 +4,12 @@ pageextension 33066132 SalesReceivableSetup extends "Sales & Receivables Setup"
     {
         addafter("Price List Nos.")
         {
-            field("Sanctioned Post No.";Rec."Sanctioned Post No.")
+            field("Sanctioned Post No."; Rec."Sanctioned Post No.")
             {
                 ApplicationArea = all;
             }
         }
     }
-    var myInt: Integer;
+    var
+        myInt: Integer;
 }

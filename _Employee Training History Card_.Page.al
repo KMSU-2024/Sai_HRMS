@@ -11,53 +11,58 @@ page 33065746 "Employee Training History Card"
         {
             group(GroupName)
             {
-                field("Entry No";"Entry No")
+                field("Entry No"; "Entry No")
                 {
                     ApplicationArea = All;
                 }
-                field("HRMS ID";"HRMS ID")
+                field("HRMS ID"; "HRMS ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Employee Name";Name)
+                field("Employee Name"; Name)
                 {
                     ApplicationArea = All;
                 }
-                field(Designation;Designation)
+                field(Designation; Designation)
                 {
                     ApplicationArea = All;
                 }
-                field("Type Of Training";"Type Of Training")
+                field("Type Of Training"; "Type Of Training")
                 {
                     ApplicationArea = All;
                 }
-                field("Traing Course Title";"Course Name")
+                field("Traing Course Title"; "Course Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Training Starting Date";"Start Date")
+                field("Training Starting Date"; "Start Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Training Ending Date";EndDate)
+                field("Training Ending Date"; EndDate)
                 {
                     ApplicationArea = All;
                 }
-                field("Duration Of Training";"Duration Of Training")
+                field("Duration Of Training"; "Duration Of Training")
                 {
                     ApplicationArea = All;
                 }
-                field("Conducted By";"Conducted By")
+                field("Conducted By"; "Conducted By")
                 {
                     ApplicationArea = All;
                 }
-                field("Training Location";"Training Location")
+                field("Training Location"; "Training Location")
                 {
                     ApplicationArea = All;
                 }
-                field("Spcified Type of training";"Spcified Type of training")
+                field("Spcified Type of training"; "Spcified Type of training")
                 {
                     ApplicationArea = All;
+                }
+                field("Certificate FileName"; "Certificate FileName")//megha 19-11-25
+                {
+                    Caption = 'Application File Name';
+                    ApplicationArea = all;
                 }
             }
         }
@@ -70,10 +75,12 @@ page 33065746 "Employee Training History Card"
             {
                 ApplicationArea = All;
 
-                trigger OnAction()begin
+                trigger OnAction()
+                begin
                 end;
             }
         }
     }
-    var myInt: Integer;
+    var
+        myInt: Integer;
 }

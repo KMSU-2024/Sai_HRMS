@@ -21,7 +21,7 @@ page 33065504 "CrossCompanyTransferHist" //SS03NOV
 
             {
 
-                field("Company Name"; Rec."Company Name") { ApplicationArea = All; }
+                field("Company Name"; Rec."Company Name") { Caption = 'Institue'; ApplicationArea = All; }
 
                 field("HRMS ID"; Rec."HRMS ID") { ApplicationArea = All; }
 

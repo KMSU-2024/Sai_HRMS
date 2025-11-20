@@ -15,62 +15,62 @@ page 33066434 "Employee transfer lists"
         {
             repeater(General)
             {
-                field("Sl. No";Rec."Sl. No")
+                field("Sl. No"; Rec."Sl. No")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Sl. No field.';
                     Editable = false;
                     Enabled = false;
                 }
-                field("HRMS ID";Rec."HRMS ID")
+                field("HRMS ID"; Rec."HRMS ID")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the HRMS ID field.';
                     Editable = false;
                 }
-                field("Employee Name";Rec."Employee Name")
+                field("Employee Name"; Rec."Employee Name")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Employee Name field.';
                     Editable = false;
                 }
-                field(Designation;Rec.Designation)
+                field(Designation; Rec.Designation)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Designation field.';
                     Editable = false;
                 }
-                field("Current Station";Rec."Current Station")
+                field("Current Station"; Rec."Current Station")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Current Station field.';
                     Editable = false;
                 }
-                field("Curren Date";Rec."Date of transfer application")
+                field("Curren Date"; Rec."Date of transfer application")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Date of transfer application field.';
                     Editable = false;
                 }
-                field(Ground;Rec.Ground)
+                field(Ground; Rec.Ground)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Ground field.';
                     Editable = false;
                 }
-                field("First Preference";Rec."First Preference")
+                field("First Preference"; Rec."First Preference")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the First Preference field.';
                     Editable = false;
                 }
-                field("Second Preference";Rec."Second Preference")
+                field("Second Preference"; Rec."Second Preference")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Second Preference field.';
                     Editable = false;
                 }
-                field("Third Preference";Rec."Third Preference")
+                field("Third Preference"; Rec."Third Preference")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Third Preference field.';
@@ -82,26 +82,34 @@ page 33066434 "Employee transfer lists"
                 //     ToolTip = 'Specifies the value of the File Name field.';
                 //     Visible = false;
                 // }
-                field(Status;Rec.Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
 
-                    trigger OnValidate()begin
-                        if rec.Status = rec.Status::Rejected then BoolCheck:=true
+                    trigger OnValidate()
+                    begin
+                        if rec.Status = rec.Status::Rejected then
+                            BoolCheck := true
                         else
-                            BoolCheck:=false;
+                            BoolCheck := false;
                     end;
                 }
-                field("Reason for rejection";rec."Reason for rejection")
+                field("Reason for rejection"; rec."Reason for rejection")
                 {
                     ApplicationArea = All;
                     Enabled = BoolCheck;
                     Editable = BoolCheck;
 
-                    trigger OnValidate()var myInt: Integer;
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
                     begin
                         rec.TestField(Status, Status::Rejected);
                     end;
+                }
+                field("File Name"; REC."File Name")
+                {
+                    ApplicationArea = ALL;
                 }
             }
         }
@@ -138,10 +146,12 @@ page 33066434 "Employee transfer lists"
                 Promoted = true;
                 Image = Download;
 
-                trigger OnAction()var FilemngCU: Codeunit "File Management";
-                inst: InStream;
-                os: OutStream;
-                tempblobloc: Codeunit "Temp Blob";
+                trigger OnAction()
+                var
+                    FilemngCU: Codeunit "File Management";
+                    inst: InStream;
+                    os: OutStream;
+                    tempblobloc: Codeunit "Temp Blob";
                 begin
                     Rec.CalcFields("Upload Document");
                     if Rec."Upload Document".HasValue then begin
@@ -156,10 +166,14 @@ page 33066434 "Employee transfer lists"
             }
         }
     }
-    trigger OnAfterGetCurrRecord()begin
-        if rec.Status = rec.Status::Rejected then BoolCheck:=true
+    trigger OnAfterGetCurrRecord()
+    begin
+        if rec.Status = rec.Status::Rejected then
+            BoolCheck := true
         else
-            BoolCheck:=false;
+            BoolCheck := false;
     end;
-    var BoolCheck: Boolean;
+
+    var
+        BoolCheck: Boolean;
 }

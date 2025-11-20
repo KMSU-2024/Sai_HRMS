@@ -8,44 +8,47 @@ report 33065811 "DTET AnnualInternalPreformance"
 
     dataset
     {
-        dataitem(Company;Company)
+        dataitem(Company; Company)
         {
-            column(CompanyName;Name)
+            column(CompanyName; Name)
             {
             }
-            dataitem("Annual Performance Review";"Annual Performance Review")
+            dataitem("Annual Performance Review"; "Annual Performance Review")
             {
-                column(HRMS_ID;"HRMS ID")
+                column(HRMS_ID; "HRMS ID")
                 {
                 }
-                column(Name;Name)
+                column(Name; Name)
                 {
                 }
-                column(Designation;Designation)
+                column(Designation; Designation)
                 {
                 }
-                column(Department;Department)
+                column(Department; Department)
                 {
                 }
-                column(Academic_Year;"Academic Year")
+                column(Academic_Year; "Academic Year")
                 {
                 }
+
                 // Start Anmol 27 jan 25
                 // column(Performance_Rating;"Performance Rating")
                 // {
                 // }
-                column(Performance_Appraisal_Review;"Performance Appraisal Review")
+                column(Performance_Appraisal_Review; "Performance Appraisal Review")
                 {
                 }
                 // End Anmol 27 jan 25
-                trigger onpreDataItem()begin
+                trigger onpreDataItem()
+                begin
                     "Annual Performance Review".ChangeCompany(Company.Name);
                     "Annual Performance Review".SetRange("Academic Year", AcademicYear);
                 end;
             }
-            trigger OnPreDataitem()begin
-            //If AcademicYear = '' then
-            //Error('Please Provide Academic Year for which you want to generate Annaul Performance');
+            trigger OnPreDataitem()
+            begin
+                //If AcademicYear = '' then
+                //Error('Please Provide Academic Year for which you want to generate Annaul Performance');
             end;
         }
     }
@@ -59,7 +62,7 @@ report 33065811 "DTET AnnualInternalPreformance"
             {
                 group(General)
                 {
-                    field(AcademicYear;AcademicYear)
+                    field(AcademicYear; AcademicYear)
                     {
                         Caption = 'Academic Year';
                         TableRelation = "Financial Year";
@@ -69,5 +72,6 @@ report 33065811 "DTET AnnualInternalPreformance"
             }
         }
     }
-    var AcademicYear: Code[20];
+    var
+        AcademicYear: Code[20];
 }

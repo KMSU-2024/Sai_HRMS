@@ -20,8 +20,11 @@ page 33065501 CrossCompanyFinancialUpgHist //SS07OCT c
             repeater(Group)
 
             {
+                field("Entry No.";"Entry No.") { ApplicationArea = All; }
+                field("No of Versions"; Rec."No of Versions") { ApplicationArea = All; }
 
-                field("Company Name"; Rec."Company Name") { ApplicationArea = All; }
+
+                field("Company Name"; Rec."Company Name") { ApplicationArea = All; Caption='Institute' ;}
 
                 field("HRMS ID"; Rec."HRMS ID") { ApplicationArea = All; }
 
@@ -33,7 +36,6 @@ page 33065501 CrossCompanyFinancialUpgHist //SS07OCT c
 
                 field("Effective Date Of MACP"; Rec."Effective Date Of MACP") { ApplicationArea = All; }
 
-                field("No of Versions"; Rec."No of Versions") { ApplicationArea = All; }
 
                 field("Modified Date Time"; Rec."Modified Date Time") { ApplicationArea = All; }
 

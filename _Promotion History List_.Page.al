@@ -15,40 +15,44 @@ page 33065741 "Promotion History List"
         {
             repeater(General)
             {
-                field("Entry No";rec."Entry No")
+                field("Entry No"; rec."Entry No")
                 {
                     ApplicationArea = All;
                 }
-                field("HRMS ID";rec."HRMS ID")
+                field("HRMS ID"; rec."HRMS ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Employee Name";rec.Name)
+                field("Employee Name"; rec.Name)
                 {
                     ApplicationArea = All;
                 }
-                field("From Designation";rec."From Designation")
+                field("From Designation"; rec."From Designation")
                 {
                     ApplicationArea = All;
                 }
-                field("To Designation";rec."To Designation")
+                field("To Designation"; rec."To Designation")
                 {
                     ApplicationArea = All;
                 }
-                field("Promotion Order Date";rec."Promotion Order Date")
+                field("Promotion Order Date"; rec."Promotion Order Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Letter NO";rec."Letter NO")
+                field("Promotion Order File Name"; "Promotion Order File Name")//megha 18-11-25
+                {
+                    ApplicationArea = all;
+                }
+                field("Letter NO"; rec."Letter NO")
                 {
                     ApplicationArea = All;
                 }
                 // (g) Modified fields //SS07OCT
-                field("Modified By";Rec."Modified By")
+                field("Modified By"; Rec."Modified By")
                 {
                     ApplicationArea = All;
                 }
-                field("Modified DateTime";Rec."Modified Date Time")
+                field("Modified DateTime"; Rec."Modified Date Time")
                 {
                     ApplicationArea = All;
                 }
@@ -91,13 +95,15 @@ page 33065741 "Promotion History List"
                 ApplicationArea = All;
                 Image = EditLines;
 
-                trigger OnAction()var promotionhistoryrecord: Record "Employee Promotion History";
-                TEMPPROMOTIONHIST: Record "Employee Promotion History" temporary;
+                trigger OnAction()
+                var
+                    promotionhistoryrecord: Record "Employee Promotion History";
+                    TEMPPROMOTIONHIST: Record "Employee Promotion History" temporary;
                 begin
-                    if promotionhistoryrecord.Get(Rec."Entry No")then begin
+                    if promotionhistoryrecord.Get(Rec."Entry No") then begin
                         PAGE.Run(PAGE::"Promotion History Card", promotionhistoryrecord);
                     end;
-                //  PAGE.Run(PAGE::"Promotion History Card", promotionhistoryrecord);
+                    //  PAGE.Run(PAGE::"Promotion History Card", promotionhistoryrecord);
                 end;
             }
             action("Promotion History") //SS07OCT
@@ -106,17 +112,21 @@ page 33065741 "Promotion History List"
                 ApplicationArea = All;
                 Image = History;
                 RunObject = page "Promotion History Card1"; // new card page (see below)
-                RunPageLink = "HRMS ID"=field("HRMS ID"); // Show history for selected employee
+                RunPageLink = "HRMS ID" = field("HRMS ID"); // Show history for selected employee
             }
+
         }
     }
-    trigger OnAfterGetRecord()var emp: Record "Employee Promot History Arch"; //SS07OCT
+
+    trigger OnAfterGetRecord()
+    var
+        emp: Record "Employee Promot History Arch"; //SS07OCT
     begin
         emp.Reset();
         emp.SetRange("HRMS ID", rec."HRMS ID");
-        if emp.FindLast()then begin
-            rec."From Designation":=emp."From Designation";
-            rec."To Designation":=emp."To Designation";
+        if emp.FindLast() then begin
+            rec."From Designation" := emp."From Designation";
+            rec."To Designation" := emp."To Designation";
             rec.Modify();
         end;
     end;

@@ -90,55 +90,58 @@ page 33066447 "Financial Upg Application"
         {
             group(General)
             {
-                field("HRMS ID";Rec."HRMS ID")
+                field("HRMS ID"; Rec."HRMS ID")
                 {
                     ApplicationArea = All;
-                    TableRelation = Employee."No." where("SLCM Employee"=const(false));
+                    TableRelation = Employee."No." where("SLCM Employee" = const(false));
 
-                    trigger OnValidate()var EmpVar: Record Employee;
-                    FinUpgr: Record "Financial Upg Application";
+                    trigger OnValidate()
+                    var
+                        EmpVar: Record Employee;
+                        FinUpgr: Record "Financial Upg Application";
                     begin
                         //SS07OCT
-                        if EmpVar.Get(rec."HRMS ID")then begin
-                            REC.Name:=EmpVar."First Name";
-                            Rec.Designation:=EmpVar.Designation;
+                        if EmpVar.Get(rec."HRMS ID") then begin
+                            REC.Name := EmpVar."First Name";
+                            Rec.Designation := EmpVar.Designation;
                             // DatAppUpdate := Today;
                             FinUpgr.Reset();
                             FinUpgr.SetRange("HRMS ID", HRMSID);
-                            if FinUpgr.FindLast()then typevar:=FinUpgr.Type
+                            if FinUpgr.FindLast() then
+                                typevar := FinUpgr.Type
                             else
-                                typevar:=FinUpgr.type::" ";
-                            REC."Current Station":=EmpVar."Current Station";
+                                typevar := FinUpgr.type::" ";
+                            REC."Current Station" := EmpVar."Current Station";
                         end;
                     end;
                 }
-                field("Employee Name";rec.Name)
+                field("Employee Name"; rec.Name)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Designation;rec.Designation)
+                field(Designation; rec.Designation)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Date of application upload(Current Date)";Rec."Date of application upload")
+                field("Date of application upload(Current Date)"; Rec."Date of application upload")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
                 //Anmol start
-                field("Effective Date Of MACP";Rec."Effective Date Of MACP")
+                field("Effective Date Of MACP"; Rec."Effective Date Of MACP")
                 {
                     ApplicationArea = all;
                 }
                 //Anmol end
-                field("Type";rec.Type)
+                field("Type"; rec.Type)
                 {
                     ApplicationArea = All;
                     Editable = Updatebtn;
                 }
-                field("Current Station";rec."Current Station")
+                field("Current Station"; rec."Current Station")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -150,6 +153,7 @@ page 33066447 "Financial Upg Application"
     {
         area(Processing)
         {
+
             /*  action("Upload Aplication")
              {
                  ApplicationArea = All;
@@ -216,24 +220,27 @@ page 33066447 "Financial Upg Application"
             {
                 Caption = 'Submit';
 
-                trigger OnAction()var HistoryRec: Record "Financial Upg App history";
-                InStr: InStream;
-                OutStr: OutStream;
+                trigger OnAction()
+                var
+                    HistoryRec: Record "Financial Upg App history";
+                    InStr: InStream;
+                    OutStr: OutStream;
                 begin
                     if Rec.IsEmpty then Error('No record to submit.');
                     HistoryRec.Init();
-                    HistoryRec."Entry No.":=0; // AutoIncrement
-                    HistoryRec."HRMS ID":=Rec."HRMS ID";
-                    HistoryRec.Name:=Rec.Name;
-                    HistoryRec.Designation:=Rec.Designation;
-                    HistoryRec."Current Station":=Rec."Current Station";
-                    HistoryRec."Date of application upload":=Today;
-                    HistoryRec.Type:=Rec.Type;
-                    HistoryRec."Application file name":=Rec."Application file name";
-                    HistoryRec."Effective Date Of MACP":=Rec."Effective Date Of MACP";
-                    HistoryRec."Modified Date Time":=CurrentDateTime;
-                    HistoryRec."User Id":=UserId;
-                    HistoryRec."Sl_no":=GetNextSlNo();
+                    HistoryRec."Entry No." := 0; // AutoIncrement
+                    HistoryRec."HRMS ID" := Rec."HRMS ID";
+                    HistoryRec.Name := Rec.Name;
+                    HistoryRec.Designation := Rec.Designation;
+                    HistoryRec."Current Station" := Rec."Current Station";
+                    //HistoryRec."Date of application upload" := CreateDateTime(WorkDate(), 0T);
+                    HistoryRec."Date of application upload" := WorkDate();
+                    HistoryRec.Type := Rec.Type;
+                    HistoryRec."Application file name" := Rec."Application file name";
+                    HistoryRec."Effective Date Of MACP" := Rec."Effective Date Of MACP";
+                    HistoryRec."Modified Date Time" := CurrentDateTime;
+                    HistoryRec."User Id" := UserId;
+                    HistoryRec."Sl_no" := GetNextSlNo();
                     // Copy blob via stream
                     Rec.CalcFields("Application file");
                     if Rec."Application file".HasValue then begin
@@ -253,27 +260,30 @@ page 33066447 "Financial Upg Application"
                 Caption = 'Upload Document';
                 ToolTip = 'Upload a PDF document (max 3MB).';
 
-                trigger OnAction()var InStr: InStream;
-                OutStr: OutStream;
+                trigger OnAction()
+                var
+                    InStr: InStream;
+                    OutStr: OutStream;
                 begin
                     // Clear previous document
-                    if Rec."Application file".HasValue()then Clear(Rec."Application file");
+                    if Rec."Application file".HasValue() then Clear(Rec."Application file");
                     Clear(FileName);
                     Clear(TempBlob);
                     // Upload PDF file
-                    if UploadIntoStream('Upload File', '', 'PDF Files (*.pdf)|*.pdf', FileName, InStr)then begin
+                    if UploadIntoStream('Upload File', '', 'PDF Files (*.pdf)|*.pdf', FileName, InStr) then begin
                         TempBlob.CreateOutStream(OutStr);
                         CopyStream(OutStr, InStr);
                         if TempBlob.Length() > 3000000 then Error('File size must be less than or equal to 3MB.');
                         Rec."Application file".CreateOutStream(OutStr);
                         TempBlob.CreateInStream(InStr);
                         CopyStream(OutStr, InStr);
-                        Rec."Application file Name":=FileName;
-                        Rec."Date of application upload":=Today; //SS07OCT
+                        Rec."Application file Name" := FileName;
+                        // Rec."Date of application upload" := CreateDateTime(WorkDate(), 0T); //SS07OCT
+                        rec."Date of application upload" := WorkDate(); //ss07oct
                         Rec.Modify();
                         Message('Document %1 uploaded successfully.', FileName);
                     end;
-                // No message if user cancels (Back)
+                    // No message if user cancels (Back)
                 end;
             }
             action(DownloadDocument) //SS07OCT
@@ -283,10 +293,12 @@ page 33066447 "Financial Upg Application"
                 Caption = 'Download Document';
                 ToolTip = 'Download the uploaded document.';
 
-                trigger OnAction()var FileMngCU: Codeunit "File Management";
-                InStr: InStream;
+                trigger OnAction()
+                var
+                    FileMngCU: Codeunit "File Management";
+                    InStr: InStream;
                 begin
-                    if Rec."Application file".HasValue()then begin
+                    if Rec."Application file".HasValue() then begin
                         Rec."Application file".CreateInStream(InStr);
                         FileMngCU.BLOBExport(TempBlob, 'Application_' + Rec."HRMS ID" + '.pdf', true);
                     end
@@ -296,35 +308,43 @@ page 33066447 "Financial Upg Application"
             }
         }
     }
-    var fileName: Text;
-    Filemgm: Codeunit "File Management";
-    Tempblob: Codeunit "Temp Blob";
-    EffectiveDateMACP: Date;
-    ins: InStream;
-    outs: OutStream;
-    HRMSID: code[20];
-    EmpNameVar: text[50];
-    DatAppUpdate: Date;
-    typevar: Option " ", MACP, RACP;
-    DesigngVar: Code[20];
-    currstation: Text[50];
-    Updatebtn: Boolean; //SS07OCT
+    var
+        fileName: Text;
+        Filemgm: Codeunit "File Management";
+        Tempblob: Codeunit "Temp Blob";
+        EffectiveDateMACP: Date;
+        ins: InStream;
+        outs: OutStream;
+        HRMSID: code[20];
+        EmpNameVar: text[50];
+        DatAppUpdate: Date;
+        typevar: Option " ",MACP,RACP;
+        DesigngVar: Code[20];
+        currstation: Text[50];
+        Updatebtn: Boolean;//SS07OCT
+
     local procedure GetNextSlNo(): Integer //SS07OCT
- var TempHist: Record "Financial Upg App history";
+    var
+        TempHist: Record "Financial Upg App history";
     begin
         //   TempHist.ChangeCompany(ToStation);  // make sure we look at target company
-        if TempHist.FindLast()then exit(TempHist."Sl_no" + 1)
+        if TempHist.FindLast() then
+            exit(TempHist."Sl_no" + 1)
         else
             exit(1);
     end;
+
     trigger OnAfterGetRecord() //SS07OCT
-    var EMp: Record Employee;
+    var
+        EMp: Record Employee;
     begin
-        if EMp.get(HRMSID)then DesigngVar:=EMp.Designation;
+        if EMp.get(HRMSID) then DesigngVar := EMp.Designation;
     end;
+
     trigger OnNewRecord(BelowxRec: Boolean) //SS07OCT
-    var myInt: Integer;
+    var
+        myInt: Integer;
     begin
-        Updatebtn:=true;
+        Updatebtn := true;
     end;
 }

@@ -17,48 +17,48 @@ page 33065496 "Financial Upg consol list" //sai added actions for update and his
         {
             repeater(GroupName)
             {
-                field("Entry No.";rec."Entry No.")
+                field("Entry No."; rec."Entry No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("HRMS ID";rec."HRMS ID")
+                field("HRMS ID"; rec."HRMS ID")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Employee Name";rec.Name)
+                field("Employee Name"; rec.Name)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Designation;rec.Designation)
+                field(Designation; rec.Designation)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Date of application upload(Current Date)";rec."Date of application upload")
+                field("Date of application upload(Current Date)"; rec."Date of application upload")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
                 // Start Anmol 27 jan 25
-                field("Effective Date Of MACP";Rec."Effective Date Of MACP")
+                field("Effective Date Of MACP"; Rec."Effective Date Of MACP")
                 {
                     ApplicationArea = All;
                 }
                 // End Anmol 27 jan 25
-                field(Type;rec.Type)
+                field(Type; rec.Type)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Current Station";rec."Current Station")
+                field("Current Station"; rec."Current Station")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Status;rec.Status)
+                field(Status; rec.Status)
                 {
                     ApplicationArea = All;
                 }
@@ -75,7 +75,9 @@ page 33065496 "Financial Upg consol list" //sai added actions for update and his
                 Caption = 'Update';
                 Image = EditLines;
 
-                trigger OnAction()var FinUpgApp: Record "Financial Upg Application";
+                trigger OnAction()
+                var
+                    FinUpgApp: Record "Financial Upg Application";
                 begin
                     // Get current record
                     FinUpgApp.Get(Rec."Entry No.", Rec."HRMS ID");
@@ -88,7 +90,9 @@ page 33065496 "Financial Upg consol list" //sai added actions for update and his
                 Caption = 'View History';
                 Image = History;
 
-                trigger OnAction()var HistoryRec: Record "Financial Upg App history";
+                trigger OnAction()
+                var
+                    HistoryRec: Record "Financial Upg App history";
                 begin
                     HistoryRec.SetRange("HRMS ID", Rec."HRMS ID");
                     PAGE.Run(PAGE::"Financial Upg App History", HistoryRec);
@@ -123,8 +127,10 @@ page 33065496 "Financial Upg consol list" //sai added actions for update and his
                 ApplicationArea = All;
                 Image = Download;
 
-                trigger OnAction()var InStr: InStream;
-                FileName: Text;
+                trigger OnAction()
+                var
+                    InStr: InStream;
+                    FileName: Text;
                 begin
                     // Make sure the BLOB is loaded
                     Rec.CalcFields("Application file");
@@ -132,8 +138,8 @@ page 33065496 "Financial Upg consol list" //sai added actions for update and his
                         // Stream out the BLOB
                         Rec."Application file".CreateInStream(InStr);
                         // Use the saved filename, fallback if empty
-                        FileName:=Rec."Application file name";
-                        if FileName = '' then FileName:='Application_' + Rec."HRMS ID" + '.pdf';
+                        FileName := Rec."Application file name";
+                        if FileName = '' then FileName := 'Application_' + Rec."HRMS ID" + '.pdf';
                         // Download the file
                         DownloadFromStream(InStr, 'Download File', '', '', FileName);
                     end
@@ -143,7 +149,8 @@ page 33065496 "Financial Upg consol list" //sai added actions for update and his
             }
         }
     }
-    var myInt: Integer;
-    isedit: Boolean;
-    Tempblob: Codeunit "Temp Blob";
+    var
+        myInt: Integer;
+        isedit: Boolean;
+        Tempblob: Codeunit "Temp Blob";
 }
