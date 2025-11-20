@@ -18,7 +18,7 @@ page 33065487 "Promotion History Buffer API" //SS03NOV
 
     SourceTable = "promotion History Buffer";
 
-    ODataKeyFields = "Entry No.";
+    ODataKeyFields = "HRMS ID";
 
     InsertAllowed = false;
 
@@ -34,43 +34,50 @@ page 33065487 "Promotion History Buffer API" //SS03NOV
 
         {
 
-            field(EntryNo; Rec."Entry No.")
+            /*   field(Entry_No; Rec."Entry No.")
+              {
+                  Caption = 'Entry No';
+                  Visible = false; 
+
+              } *///ssnov18
+            field(Institute_Name; Rec."Company Name")
             {
-                Caption = 'Entry No';
+                Caption = 'Institute_Name';
             }
-            field(HRMSID; Rec."HRMS ID")
+            field(HRMS_ID; Rec."HRMS ID")
             {
                 Caption = 'HRMS ID';
             }
-            field(CompanyName; Rec."Company Name")
+            field(Name; Name)
             {
-                Caption = 'Institue';
+                Caption = 'Name';
             }
 
-            field(FromDesignation; Rec."From Designation")
+
+            field(From_Designation; Rec."From Designation")
             {
                 Caption = 'From Designation';
             }
-            field(ToDesignation; Rec."To Designation")
+            field(To_Designation; Rec."To Designation")
             {
                 Caption = 'To Designation';
             }
-            field(PromotionOrderDate; Rec."Promotion Order Date")
+            field(Promotion_Order_Date; Rec."Promotion Order Date")
             {
                 Caption = 'Promotion Order Date';
             }
-            field(LetterNo; Rec."Letter No")
+            field(Letter_No; Rec."Letter No")
             {
                 Caption = 'Letter No';
             }
-            field(OrderIssuingAuthority; Rec."Order Issuing Authority")
+            field(Order_Issuing_Authority; Rec."Order Issuing Authority")
             {
                 Caption = 'Order Issuing Authority';
             }
-            field(Version; Rec."Version")
+            /* field(Version; Rec."Version")
             {
                 Caption = 'Version';
-            }
+            } */ //sainov18
         }
 
     }

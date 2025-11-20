@@ -1,4 +1,4 @@
-page 33065483 "Employee Achievements API" //SS03NOV
+page 33065483 "Employee Achievements API" //SS17nov
 
 {
 
@@ -21,7 +21,7 @@ page 33065483 "Employee Achievements API" //SS03NOV
     SourceTable = "Employee Achievements Buffer";
 
     // ODataKeyFields = "HRMS ID", "Company Name", "Entry No.";
-    ODataKeyFields = "Entry No.", "Version No.", "Company Name", "HRMS ID";
+    ODataKeyFields = "Version No.", "Company Name", "HRMS ID";
 
 
     ApplicationArea = All;
@@ -34,29 +34,25 @@ page 33065483 "Employee Achievements API" //SS03NOV
 
         {
 
+            /* 
+                        field(Entry_No; Rec."Entry No.")
+                        {
+                            Caption = 'Entry No.';
+                        } */ //ssnov18
 
-            field(EntryNo; Rec."Entry No.")
+
+
+            field(Institute_Name; Rec."Company Name")
             {
-                Caption = 'Entry No.';
+                Caption = 'Institute Name';
             }
-
-            field(VersionNo; Rec."Version No.")
-            {
-                Caption = 'Version No.';
-            }
-
-
-            field(CompanyName; Rec."Company Name")
-            {
-                Caption = 'institute';
-            }
-            field(HRMSID; Rec."HRMS ID")
+            field(HRMS_ID; Rec."HRMS ID")
             {
                 Caption = 'HRMS ID';
             }
 
 
-            field(EmployeeName; Rec."Employee Name")
+            field(Employee_Name; Rec."Employee Name")
             {
                 Caption = 'Employee Name';
             }
@@ -71,27 +67,27 @@ page 33065483 "Employee Achievements API" //SS03NOV
                 Caption = 'Award';
             }
 
-            field(AwardDetails; Rec."Award Details")
+            field(Award_Details; Rec."Award Details")
             {
                 Caption = 'Award Details';
             }
 
-            field(AchievementRemarks; Rec."Achievement Remarks")
+            field(Achievement_Remarks; Rec."Achievement Remarks")
             {
                 Caption = 'Achievement Remarks';
             }
 
-            field(AcademicYear; Rec."Academic Year")
+            field(Academic_Year; Rec."Academic Year")
             {
                 Caption = 'Academic Year';
             }
 
-            field(BaseQualification; Rec."Base Qualification")
+            field(Base_Qualification; Rec."Base Qualification")
             {
                 Caption = 'Base Qualification';
             }
 
-            field(ArchivedDateTime; Rec."Archived DateTime")
+            field(Create_DateTime; Rec."Archived DateTime")
             {
                 Caption = 'Create DateTime';
             }

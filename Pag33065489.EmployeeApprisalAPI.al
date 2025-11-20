@@ -20,7 +20,7 @@ page 33065620 "Employee Apprisal API" //SS03NOV
 
     SourceTable = "Employee Appraisal Buffer";
 
-    ODataKeyFields = "HRMS ID", "Company Name", "Entry No.";
+    ODataKeyFields = "HRMS ID", "Company Name";
 
     ApplicationArea = All;
     UsageCategory = Administration;
@@ -31,23 +31,24 @@ page 33065620 "Employee Apprisal API" //SS03NOV
         area(content)
 
         {
-            field(EntryNo; Rec."Entry No.")
-            {
-                Caption = 'Entry No.';
-            }
+            /*  field(Entry_No; Rec."Entry No.")
+             {
+                 Caption = 'Entry No.';
+             } */ //ssnov18
 
-            field(CompanyName; Rec."Company Name")
+
+            field(Institute_Name; Rec."Company Name")
             {
-                Caption = 'Institue';
+                Caption = 'Institute_Name';
             }
             field(HRMSID; Rec."HRMS ID")
             {
                 Caption = 'HRMS ID';
             }
 
-            field(EmployeeName; Rec."Employee Name")
+            field(Employee_Name; Rec."Employee Name")
             {
-                Caption = 'Employee Name';
+                Caption = 'Name';
             }
             field(Designation; Rec."Designation")
             {
@@ -57,19 +58,19 @@ page 33065620 "Employee Apprisal API" //SS03NOV
             {
                 Caption = 'Department';
             }
-            field(AcademicYear; Rec."Academic Year")
+            field(Academic_Year; Rec."Academic Year")
             {
                 Caption = 'Academic Year';
             }
-            field(PerformanceAppraisalReview; Rec."Performance Appraisal Review")
+            field(Performance_Appraisal_Review; Rec."Performance Appraisal Review")
             {
                 Caption = 'Performance Appraisal Review';
             }
-            field(ModifiedBy; Rec."Modified By")
+            field(Modified_By; Rec."Modified By")
             {
                 Caption = 'Modified By';
             }
-            field(ModifiedDateTime; Rec."Modified Date Time")
+            field(ModifiedDate_Time; Rec."Modified Date Time")
             {
                 Caption = 'Modified Date Time';
                 ApplicationArea = All;

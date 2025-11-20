@@ -1,4 +1,4 @@
-page 33065797 "Employee Financial Upg  API1" //SS03NOV
+page 33065797 "Employee Financial Upg  API1" //SS17Nov
 
 {
 
@@ -19,7 +19,7 @@ page 33065797 "Employee Financial Upg  API1" //SS03NOV
 
     SourceTable = "Employee Financial Upg Buffer";
 
-    ODataKeyFields = "HRMS ID", "Company Name", "Entry No.";
+    ODataKeyFields = "HRMS ID", "Company Name";
 
     ApplicationArea = All;
     UsageCategory = Administration;
@@ -31,33 +31,35 @@ page 33065797 "Employee Financial Upg  API1" //SS03NOV
         area(content)
 
         {
-            field(EntryNo; Rec."Entry No.")
+            /* field("Entry_No"; Rec."Entry No.")
             {
                 Caption = 'Entry No.';
-            }
-            field(NoOfVersions; Rec."No of Versions")
+            } *///ssnov18
+
+            field(Institute_Name; Rec."Company Name")
             {
-                Caption = 'No of Versions';
+                Caption = 'Institute_Name';
             }
 
-            field(HRMSID; Rec."HRMS ID")
+
+
+            field(HRMS_ID; Rec."HRMS ID")
             {
                 Caption = 'HRMS ID';
             }
-
-            field(CompanyName; Rec."Company Name")
+            field(Name; Name)
             {
-                Caption = 'Institute';
+                Caption = 'Name';
             }
 
 
 
-            field(ApplicationFileName; Rec."Application File Name")
+            field(Application_FileName; Rec."Application File Name")
             {
                 Caption = 'Application File Name';
             }
 
-            field(CurrentStation; Rec."Current Station")
+            field(Current_Station; Rec."Current Station")
             {
                 Caption = 'Current Station';
             }
@@ -67,14 +69,14 @@ page 33065797 "Employee Financial Upg  API1" //SS03NOV
                 Caption = 'Status';
             }
 
-            field(EffectiveDateOfMACP; Rec."Effective Date Of MACP")
+            field(Effective_Date_Of_MACP; Rec."Effective Date Of MACP")
             {
                 Caption = 'Effective Date Of MACP';
             }
 
 
 
-            field(ModifiedDateTime; Rec."Modified Date Time")
+            field(Modified_Date_Time; Rec."Modified Date Time")
             {
                 Caption = 'Modified Date Time';
             }

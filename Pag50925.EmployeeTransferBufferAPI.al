@@ -19,7 +19,7 @@ page 33065484 "Employee Transfer Buffer API" //SS03NOV
 
     SourceTable = "Employee Transfer Buffer";
 
-    ODataKeyFields = "HRMS ID", "Company Name", "Entry No.";
+    ODataKeyFields = "HRMS ID", "Company Name";
 
     ApplicationArea = All;
     UsageCategory = Administration;
@@ -31,23 +31,21 @@ page 33065484 "Employee Transfer Buffer API" //SS03NOV
         area(content)
 
         {
+           /*  field(Entry_No; Rec."Entry No.")
+            {
+                Caption = 'Entry_No.';
+            } *///sai
+            field(Institute_Name; Rec."Company Name")
+            {
+                Caption = 'Institute_Name';
+            }
 
-            field(HRMSID; Rec."HRMS ID")
+            field(HRMS_ID; Rec."HRMS ID")
             {
                 Caption = 'HRMS ID';
             }
 
-            field(CompanyName; Rec."Company Name")
-            {
-                Caption = 'Company Name';
-            }
-
-            field(EntryNo; Rec."Entry No.")
-            {
-                Caption = 'Entry No.';
-            }
-
-            field(EmployeeName; Rec."Employee Name")
+            field(Employee_Name; Rec."Employee Name")
             {
                 Caption = 'Employee Name';
             }
@@ -57,25 +55,60 @@ page 33065484 "Employee Transfer Buffer API" //SS03NOV
                 Caption = 'Designation';
             }
 
-            field(FromStation; Rec."From Station")
+            field(From_Station; Rec."From Station")
             {
                 Caption = 'From Station';
             }
 
-            field(ToStation; Rec."To Station")
+            field(To_Station; Rec."To Station")
             {
                 Caption = 'To Station';
             }
 
-            field(TransferOrderIssuingAuthority; Rec."Transfer Order Issuing Authority")
+            field(Transfer_Order_Issuing_Authority; Rec."Transfer Order Issuing Authority")
             {
                 Caption = 'Transfer Order Issuing Authority';
             }
 
-            field(RelieveDate; Rec."Relieve Date")
+            field(Relieve_Date; Rec."Relieve Date")
             {
                 Caption = 'Relieve Date';
             }
+            field("Relief_Order_No"; "Relief Order No.")
+            {
+                ApplicationArea = all;
+            }
+            field("Letter_No"; "Letter No")
+            {
+
+            }
+
+            field("Promotion_letter_no"; "Promotion letter no")
+            {
+                ApplicationArea = all;
+            }
+            field("Promotion_order_date"; "Promotion order date")
+            {
+                ApplicationArea = all;
+            }
+            field("Joining_Date"; "Joining Date")
+            {
+                ApplicationArea = all;
+            }
+            field("Relieving_Event"; "Relieving Event")
+            {
+                ApplicationArea = all;
+            }
+            field("To_Designation"; "To Designation")
+            {
+                ApplicationArea = all;
+            }
+            field(status; status)
+            {
+                ApplicationArea = all;
+
+            }
+
 
         }
 

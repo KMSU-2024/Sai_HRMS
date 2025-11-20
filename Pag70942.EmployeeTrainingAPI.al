@@ -1,4 +1,4 @@
-page 33065486 "Employee Training API"
+page 33065486 "Employee Training API" //SS17nov
 
 {
 
@@ -31,19 +31,22 @@ page 33065486 "Employee Training API"
             repeater(Group)
             {
 
-                field(EntryNo; Rec."Entry No.") { Caption = 'Entry No.'; }
+                // field("Entry_No"; Rec."Entry No.") { Caption = 'Entry No.'; } //ssnov18
 
-                field(HRMSID; Rec."HRMS ID") { Caption = 'HRMS ID'; }
+                field(Institute_Name; Rec."Company Name") { Caption = 'Institute_Name'; }
 
-                field(CompanyName; Rec."Company Name") { Caption = 'Institue Name'; }
 
-                field(EndDate; Rec."End Date") { Caption = 'End Date'; }
+                field(HRMS_ID; Rec."HRMS ID") { Caption = 'HRMS ID'; }
+                field(Name; Name) { Caption = 'Name'; }
+                field("Start_Date"; "Start Date")
+                { Caption = 'Start Date'; }
+                field(End_Date; Rec."End Date") { Caption = 'End Date'; }
 
-                field(DurationOfTraining; Rec."Duration Of Training") { Caption = 'Duration Of Training'; }
+                field(DurationOf_Training; Rec."Duration Of Training") { Caption = 'Duration Of Training'; }
 
-                field(ConductedBy; Rec."Conducted By") { Caption = 'Conducted By'; }
+                field(Conducted_By; Rec."Conducted By") { Caption = 'Conducted By'; }
 
-                field(TrainingLocation; Rec."Training Location") { Caption = 'Training Location'; }
+                field(Training_Location; Rec."Training Location") { Caption = 'Training Location'; }
 
             }
 
