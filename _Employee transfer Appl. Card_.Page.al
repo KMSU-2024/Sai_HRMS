@@ -15,52 +15,52 @@ page 33066448 "Employee transfer Appl. Card"
         {
             group(General)
             {
-                field("Sl. No"; Rec."Sl. No")
+                field("Sl. No";Rec."Sl. No")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Sl. No field.';
                 }
-                field("HRMS ID"; Rec."HRMS ID")
+                field("HRMS ID";Rec."HRMS ID")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the HRMS ID field.';
                 }
-                field("Employee Name"; Rec."Employee Name")
+                field("Employee Name";Rec."Employee Name")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Employee Name field.';
                 }
-                field(Designation; Rec.Designation)
+                field(Designation;Rec.Designation)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Designation field.';
                 }
-                field("Current Station"; Rec."Current Station")
+                field("Current Station";Rec."Current Station")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Current Station field.';
                 }
-                field("Curren Date"; Rec."Date of transfer application")
+                field("Curren Date";Rec."Date of transfer application")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Date of transfer application field.';
                 }
-                field(Ground; Rec.Ground)
+                field(Ground;Rec.Ground)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Ground field.';
                 }
-                field("First Preference"; Rec."First Preference")
+                field("First Preference";Rec."First Preference")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the First Preference field.';
                 }
-                field("Second Preference"; Rec."Second Preference")
+                field("Second Preference";Rec."Second Preference")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Second Preference field.';
                 }
-                field("Third Preference"; Rec."Third Preference")
+                field("Third Preference";Rec."Third Preference")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Third Preference field.';
@@ -71,32 +71,27 @@ page 33066448 "Employee transfer Appl. Card"
                 //     ToolTip = 'Specifies the value of the File Name field.';
                 //     Visible = false;
                 // }
-                field(Status; Rec.Status)
+                field(Status;Rec.Status)
                 {
                     ApplicationArea = All;
 
-                    trigger OnValidate()
-                    begin
-                        if rec.Status = rec.Status::Rejected then
-                            BoolCheck := true
+                    trigger OnValidate()begin
+                        if rec.Status = rec.Status::Rejected then BoolCheck:=true
                         else
-                            BoolCheck := false;
+                            BoolCheck:=false;
                     end;
                 }
-                field("Reason for rejection"; rec."Reason for rejection")
+                field("Reason for rejection";rec."Reason for rejection")
                 {
                     ApplicationArea = All;
 
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
+                    trigger OnValidate()var myInt: Integer;
                     begin
                         rec.TestField(Status, Status::Rejected);
                     end;
                 }
-                field("File Name"; "File Name")//megha 25-8-25
+                field("File Name";"File Name") //megha 25-8-25
                 {
-
                 }
             }
         }
@@ -135,12 +130,10 @@ page 33066448 "Employee transfer Appl. Card"
                 Promoted = true;
                 Image = Download;
 
-                trigger OnAction()
-                var
-                    FilemngCU: Codeunit "File Management";
-                    inst: InStream;
-                    os: OutStream;
-                    tempblobloc: Codeunit "Temp Blob";
+                trigger OnAction()var FilemngCU: Codeunit "File Management";
+                inst: InStream;
+                os: OutStream;
+                tempblobloc: Codeunit "Temp Blob";
                 begin
                     Rec.CalcFields("Upload Document");
                     if Rec."Upload Document".HasValue then begin
@@ -155,14 +148,10 @@ page 33066448 "Employee transfer Appl. Card"
             }
         }
     }
-    trigger OnAfterGetCurrRecord()
-    begin
-        if rec.Status = rec.Status::Rejected then
-            BoolCheck := true
+    trigger OnAfterGetCurrRecord()begin
+        if rec.Status = rec.Status::Rejected then BoolCheck:=true
         else
-            BoolCheck := false;
+            BoolCheck:=false;
     end;
-
-    var
-        BoolCheck: Boolean;
+    var BoolCheck: Boolean;
 }

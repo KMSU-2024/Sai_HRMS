@@ -1,46 +1,96 @@
-table 33066438 TempEmployeeTransferHistory //SS07OCT c
+table 33066438 "Employee Transfer Buffer" //SS03NOV
+
 {
+
+    Caption = 'Employee Transfer Buffer';
+
     DataClassification = ToBeClassified;
-    TableType = Temporary;
 
     fields
+
     {
-        field(1; "Line ID"; Integer)
+
+        field(1; "HRMS ID"; Code[20])
+
         {
+
+            Caption = 'HRMS ID';
+
         }
+
         field(2; "Company Name"; Text[100])
+
         {
+
+            Caption = 'Company Name';
+
         }
-        field(3; "Entry No"; Integer)
+
+        field(3; "Entry No."; Integer)
+
         {
+
+            Caption = 'Entry No.';
+
         }
-        field(4; "HRMS ID"; Code[20])
+
+        field(4; "Employee Name"; Text[100])
+
         {
+
+            Caption = 'Employee Name';
+
         }
-        field(5; "Name"; Text[100])
+
+        field(5; "Designation"; Text[100])
+
         {
+
+            Caption = 'Designation';
+
         }
-        field(6; "Designation"; Text[100])
+
+        field(6; "From Station"; Text[100])
+
         {
+
+            Caption = 'From Station';
+
         }
-        field(7; "From Station"; Text[100])
+
+        field(7; "To Station"; Text[100])
+
         {
+
+            Caption = 'To Station';
+
         }
-        field(8; "To Station"; Text[100])
+
+        field(8; "Transfer Order Issuing Authority"; Text[100])
+
         {
+
+            Caption = 'Transfer Order Issuing Authority';
+
         }
-        field(9; "Transfer Order Issuing Authority"; Text[100])
+
+        field(9; "Relieve Date"; Date)
+
         {
+
+            Caption = 'Relieve Date';
+
         }
-        field(10; "Relieve Date"; Date)
-        {
-        }
+
     }
+
     keys
+
     {
-        key(PK; "Line ID")
-        {
-            Clustered = true;
-        }
+
+        key(PK; "HRMS ID", "Company Name", "Entry No.") { Clustered = true; }
+
     }
+
 }
+

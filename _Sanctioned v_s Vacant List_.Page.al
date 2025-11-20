@@ -17,31 +17,31 @@ page 33066135 "Sanctioned v/s Vacant List"
         {
             repeater(GroupName)
             {
-                field("Sanctioned Post No."; Rec."Sanctioned Post No.")
+                field("Sanctioned Post No.";Rec."Sanctioned Post No.")
                 {
                     ApplicationArea = all;
                 }
-                field("Department/Trade/Section"; Rec."Department/Trade/Section")
+                field("Department/Trade/Section";Rec."Department/Trade/Section")
                 {
                     ApplicationArea = ALL;
                 }
-                field(Designation; Rec.Designation)
+                field(Designation;Rec.Designation)
                 {
                     ApplicationArea = ALL;
                 }
-                field("Approval No."; Rec."Approval No.")
+                field("Approval No.";Rec."Approval No.")
                 {
                     ApplicationArea = ALL;
                 }
-                field("Sactioned Strength"; Rec."Sactioned Strength")
+                field("Sactioned Strength";Rec."Sactioned Strength")
                 {
                     ApplicationArea = all;
                 }
-                field(Remarks; Rec.Remarks)
+                field(Remarks;Rec.Remarks)
                 {
                     ApplicationArea = all;
                 }
-                field("File Name"; "File Name")
+                field("File Name";"File Name")
                 {
                     ApplicationArea = all;
                 }
@@ -54,21 +54,15 @@ page 33066135 "Sanctioned v/s Vacant List"
         {
             action(ActionName)
             {
-                trigger OnAction()
-                begin
+                trigger OnAction()begin
                 end;
             }
         }
-
     }
-    trigger OnOpenPage()
-    var
-        myInt: Integer;
+    trigger OnOpenPage()var myInt: Integer;
     begin
-        //  Clear(Rec);
+    //  Clear(Rec);
     end;
-
-
     /* trigger OnOpenPage()
     var
         curec: Record "Sanctioned v/s Vacant";
@@ -87,6 +81,5 @@ page 33066135 "Sanctioned v/s Vacant List"
         end;
     end;
  */
-    var
-        myInt: Integer;
+    var myInt: Integer;
 }

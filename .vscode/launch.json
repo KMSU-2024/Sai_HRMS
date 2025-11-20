@@ -6,7 +6,7 @@
             "type": "al",
             "request": "launch",
             "environmentType": "OnPrem",
-            "server": "http://localhost:8080/DTETDEV3/",
+            "server": "http://localhost:8080/sandbox3/",
             "serverInstance": "DTETDLVP",
             "authentication": "UserPassword",
             "breakOnError": "All",

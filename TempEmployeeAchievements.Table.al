@@ -1,65 +1,54 @@
-table 33066437 TempEmployeeAchievements ////SS07OCT c
+table 33066437 "Employee Achievements Buffer" //SS03NOV
+
 {
+
+    Caption = 'Employee Achievements Buffer';
+
     DataClassification = ToBeClassified;
-    //TableType = Temporary;
 
     fields
+
     {
-        field(1; "Line ID"; Integer)
-        {
-        }
-        field(2; "Company Name"; Text[100])
-        {
-        }
-        field(3; "Archive Entry No."; Integer)
-        {
-            AutoIncrement = true;
-        }
-        field(4; "Entry No"; Integer)
-        {
-        }
-        field(5; "HRMS ID"; Code[20])
-        {
-        }
-        field(6; "Employee Name"; Text[100])
-        {
-        }
-        field(7; Designation; Code[20])
-        {
-        }
-        field(8; "Base Qualification"; Text[100])
-        {
-        }
-        field(9; "Inservice Qua. Upgradation"; Boolean)
-        {
-        }
-        field(10; Award; Boolean)
-        {
-        }
-        field(11; "Award Details"; Text[250])
-        {
-        }
-        field(12; "Achivement Remarks"; Text[250])
-        {
-        }
-        field(13; "Academic Year"; Code[10])
-        {
-        }
-        field(90; "Version No."; Integer)
-        {
-        }
-        field(91; "Archived By"; Code[50])
-        {
-        }
-        field(92; "Archived DateTime"; DateTime)
-        {
-        }
+
+        field(1; "HRMS ID"; Code[20]) { Caption = 'HRMS ID'; }
+
+        field(2; "Company Name"; Text[100]) { Caption = 'Company Name'; }
+
+        field(3; "Archive Entry No."; Integer) { Caption = 'Archive Entry No.'; }
+
+        field(4; "Entry No."; Integer) { Caption = 'Entry No.'; }
+
+        field(5; "Employee Name"; Text[100]) { Caption = 'Employee Name'; }
+
+        field(6; "Designation"; Code[20]) { Caption = 'Designation'; }
+
+        field(7; "Base Qualification"; Text[100]) { Caption = 'Base Qualification'; }
+
+        field(8; "Inservice Qua. Upgradation"; Boolean) { Caption = 'Inservice Qualification Upgradation'; }
+
+        field(9; "Award"; Boolean) { Caption = 'Award'; }
+
+        field(10; "Award Details"; Text[250]) { Caption = 'Award Details'; }
+
+        field(11; "Achievement Remarks"; Text[250]) { Caption = 'Achievement Remarks'; }
+
+        field(12; "Academic Year"; Code[10]) { Caption = 'Academic Year'; }
+
+        field(13; "Version No."; Integer) { Caption = 'Version No.'; }
+
+        field(14; "Archived By"; Code[50]) { Caption = 'Archived By'; }
+
+        field(15; "Archived DateTime"; DateTime) { Caption = 'Archived DateTime'; }
+
     }
+
     keys
+
     {
-        key(PK; "Line ID")
-        {
-            Clustered = true;
-        }
+
+        key(PK; "HRMS ID", "Company Name", "Entry No.") { Clustered = true; }
+
     }
+
 }
+

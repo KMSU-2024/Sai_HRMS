@@ -15,27 +15,27 @@ page 33065722 "Annual perfomance History Card"
         {
             group(General)
             {
-                field("HRMS ID"; Rec."HRMS ID")
+                field("HRMS ID";Rec."HRMS ID")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the HRMS ID field.';
                 }
-                field(Name; Rec.Name)
+                field(Name;Rec.Name)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Name field.';
                 }
-                field(Designation; Rec.Designation)
+                field(Designation;Rec.Designation)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Designation field.';
                 }
-                field(Department; Rec.Department)
+                field(Department;Rec.Department)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Department field.';
                 }
-                field("Academic Year"; Rec."Academic Year")
+                field("Academic Year";Rec."Academic Year")
                 {
                     // Caption = 'Financial Year';
                     ApplicationArea = All;
@@ -47,12 +47,12 @@ page 33065722 "Annual perfomance History Card"
                 //     ApplicationArea = All;
                 //     ToolTip = 'Specifies the value of the Performance Rating field.';
                 // }
-                field("Performance Appraisal Review"; Rec."Performance Appraisal Review")
+                field("Performance Appraisal Review";Rec."Performance Appraisal Review")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Performance Rating field.';
                 }
-                // end anmol 27 jan 25
+            // end anmol 27 jan 25
             }
         }
     }

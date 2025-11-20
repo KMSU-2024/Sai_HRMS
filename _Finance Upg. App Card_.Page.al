@@ -12,48 +12,48 @@ page 33066446 "Finance Upg. App Card"
         {
             Group(Genearl)
             {
-                field("Entry No."; rec."Entry No.")
+                field("Entry No.";rec."Entry No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("HRMS ID"; rec."HRMS ID")
+                field("HRMS ID";rec."HRMS ID")
                 {
                     ApplicationArea = All;
-                    //Editable = false;
+                //Editable = false;
                 }
-                field("Employee Name"; rec.Name)
+                field("Employee Name";rec.Name)
                 {
                     ApplicationArea = All;
-                    //Editable = false;
+                //Editable = false;
                 }
-                field(Designation; rec.Designation)
+                field(Designation;rec.Designation)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Date of application upload(Current Date)"; rec."Date of application upload")
+                field("Date of application upload(Current Date)";rec."Date of application upload")
                 {
                     ApplicationArea = All;
-                    //Editable = false;
+                //Editable = false;
                 }
                 // Start Anmol 27 jan 25
-                field("Effective Date Of MACP"; Rec."Effective Date Of MACP")
+                field("Effective Date Of MACP";Rec."Effective Date Of MACP")
                 {
                     ApplicationArea = All;
                 }
                 // End Anmol 27 jan 25
-                field(Type; rec.Type)
+                field(Type;rec.Type)
                 {
                     ApplicationArea = All;
-                    //Editable = false;
+                //Editable = false;
                 }
-                field("Current Station"; rec."Current Station")
+                field("Current Station";rec."Current Station")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Status; rec.Status)
+                field(Status;rec.Status)
                 {
                     ApplicationArea = All;
                 }
@@ -70,12 +70,10 @@ page 33066446 "Finance Upg. App Card"
                 // Promoted = true;
                 Image = Download;
 
-                trigger OnAction()
-                var
-                    FilemngCU: Codeunit "File Management";
-                    inst: InStream;
-                    os: OutStream;
-                    tempblobloc: Codeunit "Temp Blob";
+                trigger OnAction()var FilemngCU: Codeunit "File Management";
+                inst: InStream;
+                os: OutStream;
+                tempblobloc: Codeunit "Temp Blob";
                 begin
                     Rec.CalcFields("Application file");
                     if Rec."Application file".HasValue then begin
@@ -90,6 +88,5 @@ page 33066446 "Finance Upg. App Card"
             }
         }
     }
-    var
-        myInt: Integer;
+    var myInt: Integer;
 }

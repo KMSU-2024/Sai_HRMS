@@ -4,7 +4,7 @@ page 33066429 "Employee Custom Lists"
     Caption = 'Employee Custom Lists';
     PageType = List;
     SourceTable = Employee;
-    SourceTableView = where(Status = const(Active), "SLCM Employee" = const(false));
+    SourceTableView = where(Status=const(Active), "SLCM Employee"=const(false));
     //SourceTableView = where(Status = const(Active));
     UsageCategory = Lists;
     CardPageId = "Employee Custom Card";
@@ -19,191 +19,190 @@ page 33066429 "Employee Custom Lists"
         {
             repeater(General)
             {
-                field("No."; Rec."No.")
+                field("No.";Rec."No.")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the number of the involved entry or record, according to the specified number series.';
                 }
-                field("First Name"; Rec."First Name")
+                field("First Name";Rec."First Name")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the employee''s first name.';
                     Caption = 'Employee Name';
                 }
-                field("Bill Group"; Rec."Bill Group")
+                field("Bill Group";Rec."Bill Group")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Bill Group field.';
                 }
-                field("Bill Type"; Rec."Bill Type")
+                field("Bill Type";Rec."Bill Type")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Bill Type field.';
                 }
-                field("Account Type"; Rec."Account Type")
+                field("Account Type";Rec."Account Type")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Account Type field.';
                 }
-                field("Designation as per HRMS Site"; rec."Designation as per HRMS Site")
+                field("Designation as per HRMS Site";rec."Designation as per HRMS Site")
                 {
                     ApplicationArea = All;
                 }
-                field(Designation; Rec.Designation)
+                field(Designation;Rec.Designation)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Designation field.';
                 }
-                field("Dept./Trade/Section"; Rec."Dept./Trade/Section")
+                field("Dept./Trade/Section";Rec."Dept./Trade/Section")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Dept./Trade/Section field.';
                 }
-                field("Post Group"; Rec."Post Group")
+                field("Post Group";Rec."Post Group")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Post Group field.';
                 }
-                field("GPF/PRAN No"; Rec."GPF/PRAN No")
+                field("GPF/PRAN No";Rec."GPF/PRAN No")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the GPF/PRAN No field.';
                 }
-                field("Birth Date"; Rec."Birth Date")
+                field("Birth Date";Rec."Birth Date")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the employee''s date of birth.';
                 }
-                field(Gender; Rec.Gender)
+                field(Gender;Rec.Gender)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the employee''s gender.';
                 }
-                field("D.O.S"; Rec."D.O.S")
+                field("D.O.S";Rec."D.O.S")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the D.O.S (Date of Superannuation) field.';
                 }
-                field(Category; Rec.Category)
+                field(Category;Rec.Category)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Category field.';
                 }
-                field("Joining Station"; Rec."Joining Station")
+                field("Joining Station";Rec."Joining Station")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Joining Station field.';
                 }
-                field("D.O.J (Service)"; Rec."D.O.J (Service)")
+                field("D.O.J (Service)";Rec."D.O.J (Service)")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the D.O.J (Service) field.';
                 }
-                field("Current Station"; Rec."Current Station")
+                field("Current Station";Rec."Current Station")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Current Station field.';
                 }
-                field("Service Joining Designation"; Rec."Service Joining Designation")
+                field("Service Joining Designation";Rec."Service Joining Designation")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Service Joining Designation field.';
                 }
-                field("Base Qualification"; Rec."Base Qualification")
+                field("Base Qualification";Rec."Base Qualification")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Base Qualification field.';
                 }
-                field("Home Dist as per HRMS Site"; "Home Dist as per HRMS Site")
+                field("Home Dist as per HRMS Site";"Home Dist as per HRMS Site")
                 {
                     ApplicationArea = All;
                 }
-                field("Home Dist"; Rec."Home Dist")
+                field("Home Dist";Rec."Home Dist")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Home Dist field.';
                 }
-                field("Basic Gr. Pay"; Rec."Basic Gr. Pay")
+                field("Basic Gr. Pay";Rec."Basic Gr. Pay")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Basic Gr. Pay field.';
                 }
-                field("Employment Status"; Rec."Employment Status")
+                field("Employment Status";Rec."Employment Status")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Employment Status field.';
                 }
-                field("Date of increment"; Rec."Date of increment")
+                field("Date of increment";Rec."Date of increment")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Date of increment field.';
                 }
-                field("E-Mail"; Rec."E-Mail")
+                field("E-Mail";Rec."E-Mail")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the employee''s private email address.';
                 }
-                field("EPIC No"; Rec."EPIC No")
+                field("EPIC No";Rec."EPIC No")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the EPIC No field.';
                 }
-                field("MACP Status"; Rec."MACP Status")
+                field("MACP Status";Rec."MACP Status")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the MACP Status field.';
                 }
-                field("Mobile Phone No."; Rec."Mobile Phone No.")
+                field("Mobile Phone No.";Rec."Mobile Phone No.")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the employee''s private telephone number.';
                 }
-                field("Pension Remark"; Rec."Pension Remark")
+                field("Pension Remark";Rec."Pension Remark")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Pension Remark field.';
                 }
-                field("Aadhaar No"; Rec."Aadhaar No")
+                field("Aadhaar No";Rec."Aadhaar No")
                 {
                     ApplicationArea = All;
                     ExtendedDatatype = Masked;
                     ToolTip = 'Specifies the value of the Aadhaar No field.';
                 }
-                field(Status; rec.Status)
+                field(Status;rec.Status)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Aadhaar No field.';
                 }
-                field("SLCM Employee"; "SLCM Employee")
+                field("SLCM Employee";"SLCM Employee")
                 {
                     ApplicationArea = All;
                 }
-                field("Deployment Location"; "Deployment Location")
+                field("Deployment Location";"Deployment Location")
                 {
                     ApplicationArea = All;
                 }
-                field("Deployment Date"; "Deployment Date")
+                field("Deployment Date";"Deployment Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Deployment Start Date"; "Deployment Start Date")
+                field("Deployment Start Date";"Deployment Start Date")
                 {
                     ApplicationArea = all;
                 }
-                field("Deployment End Date"; "Deployment End Date")
+                field("Deployment End Date";"Deployment End Date")
                 {
                     ApplicationArea = all;
                 }
-                field("Last Name"; "Last Name")
+                field("Last Name";"Last Name")
                 {
                     ApplicationArea = all;
                 }
-                field("Search Name"; "Search Name")
+                field("Search Name";"Search Name")
                 {
                     ApplicationArea = all;
                 }
             }
-
         }
     }
     actions
@@ -216,21 +215,18 @@ page 33066429 "Employee Custom Lists"
                 Image = Report;
                 RunObject = report "Employee Custom List report";
 
-                trigger OnAction()
-                begin
+                trigger OnAction()begin
                 end;
             }
             action(ActionName)
             {
                 ApplicationArea = All;
 
-                trigger OnAction()
-                var
-                    Addi: Record 33065970;
+                trigger OnAction()var Addi: Record 33065970;
                 begin
                     Addi.Init();
-                    Addi."HRMS ID" := '32001318';
-                    Addi."Service Joining Designation" := 'Hello123';
+                    Addi."HRMS ID":='32001318';
+                    Addi."Service Joining Designation":='Hello123';
                     Addi.Insert(true);
                 end;
             }
@@ -240,39 +236,28 @@ page 33066429 "Employee Custom Lists"
                 Caption = 'Employee History';
                 Image = History;
 
-                trigger OnAction()
-                var
-                    EmpArchive: Record "Employee History";
+                trigger OnAction()var EmpArchive: Record "Employee History";
                 begin
                     EmpArchive.Reset();
                     EmpArchive.SetRange("Employee No.", Rec."No.");
                     PAGE.RunModal(PAGE::"Employee Archive List", EmpArchive);
                 end;
             }
-
         }
-
     }
-    procedure RetireEmployees()
-    var
-        Emp: Record Employee;
+    procedure RetireEmployees()var Emp: Record Employee;
     begin
         // Filter active employees with D.O.S <= today
         Emp.SetRange(Status, Emp.Status::Active);
         Emp.SetRange("Employment Status", Emp."Employment Status"::Regular);
         Emp.SetFilter("D.O.S", '..%1', WorkDate());
         //Message('%1', WorkDate());
-
-        if Emp.FindSet() then
-            repeat
-                Emp."Employment Status" := Emp."Employment Status"::Inactive;
-                Emp.Status := Emp.Status::Inactive;
+        if Emp.FindSet()then repeat Emp."Employment Status":=Emp."Employment Status"::Inactive;
+                Emp.Status:=Emp.Status::Inactive;
                 Emp.Modify(true);
             until Emp.Next() = 0;
     end;
-
-    trigger OnOpenPage()
-    begin
+    trigger OnOpenPage()begin
         RetireEmployees();
         CurrPage.Update(true);
     end;

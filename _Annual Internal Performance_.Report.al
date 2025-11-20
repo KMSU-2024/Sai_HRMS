@@ -8,36 +8,35 @@ report 33065700 "Annual Internal Performance"
 
     dataset
     {
-        dataitem("Annual Performance Review"; "Annual Performance Review")
+        dataitem("Annual Performance Review";"Annual Performance Review")
         {
-            column(HRMS_ID; "HRMS ID")
+            column(HRMS_ID;"HRMS ID")
             {
             }
-            column(Name; Name)
+            column(Name;Name)
             {
             }
-            column(Designation; Designation)
+            column(Designation;Designation)
             {
             }
-            column(Department; Department)
+            column(Department;Department)
             {
             }
-            column(Academic_Year; "Academic Year")
+            column(Academic_Year;"Academic Year")
             {
             }
             // Start Anmol 27 jan 25
             // column(Performance_Rating;"Performance Rating")
             // {
             // }
-            column(Performance_Appraisal_Review; "Performance Appraisal Review")
+            column(Performance_Appraisal_Review;"Performance Appraisal Review")
             {
             }
             // end anmol 27 jan 25
-            trigger onpreDataItem()
-            begin
-                //  If AcademicYear = '' then
-                //Error('Please Provide Academic Year for which you want to generate Annaul Performance');
-                //"Annual Performance Review".SetRange("Academic Year", AcademicYear);
+            trigger onpreDataItem()begin
+            //  If AcademicYear = '' then
+            //Error('Please Provide Academic Year for which you want to generate Annaul Performance');
+            //"Annual Performance Review".SetRange("Academic Year", AcademicYear);
             end;
         }
     }
@@ -49,7 +48,7 @@ report 33065700 "Annual Internal Performance"
             {
                 group(GroupName)
                 {
-                    field(AcademicYear; AcademicYear)
+                    field(AcademicYear;AcademicYear)
                     {
                     }
                 }
@@ -66,6 +65,5 @@ report 33065700 "Annual Internal Performance"
             }
         }
     }
-    var
-        AcademicYear: Code[20];
+    var AcademicYear: Code[20];
 }

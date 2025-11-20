@@ -8,47 +8,44 @@ report 33065687 "Disciplinary Details Preview"
 
     dataset
     {
-        dataitem(Employee; Employee)
+        dataitem(Employee;Employee)
         {
-            dataitem("Disciplinary History"; "Disciplinary History")
+            dataitem("Disciplinary History";"Disciplinary History")
             {
-                DataItemLink = "HRMS ID" = field("No.");
+                DataItemLink = "HRMS ID"=field("No.");
 
-                column(HRMS_ID; "HRMS ID")
+                column(HRMS_ID;"HRMS ID")
                 {
                 }
-                column(Name; Name)
+                column(Name;Name)
                 {
                 }
-                column(Designation; Designation)
+                column(Designation;Designation)
                 {
                 }
-
                 // Start Anmol 28 jan 25 replace disciplinary charge to Disciplinary Charge file name
                 /*  column(Disciplinary_Charges;"Disciplinary Charges")
                {
                } */
-                column(Disciplinary_Charges_File_Name; "Disciplinary Charges File Name")
+                column(Disciplinary_Charges_File_Name;"Disciplinary Charges File Name")
                 {
                 }
-
-                column(Disciplinary_CaseLetter_No; "Disciplinary CaseLetter No")
+                column(Disciplinary_CaseLetter_No;"Disciplinary CaseLetter No")
                 {
                 }
-                column(Disciplinary_CaseDate; "Disciplinary CaseDate")
+                column(Disciplinary_CaseDate;"Disciplinary CaseDate")
                 {
                 }
-                column(CurrDtTime; CURRENTDATETIME)
+                column(CurrDtTime;CURRENTDATETIME)
                 {
                 }
-                column(SLNo; "SLNo")
+                column(SLNo;"SLNo")
                 {
                 }
-                trigger onaftergetrecord()
-                begin
+                trigger onaftergetrecord()begin
                     if PrevHRMSID <> "Disciplinary History"."HRMS ID" then Clear(SLNo);
-                    SLNo += 1;
-                    PrevHRMSID := "Disciplinary History"."HRMS ID";
+                    SLNo+=1;
+                    PrevHRMSID:="Disciplinary History"."HRMS ID";
                 end;
             }
         }
@@ -75,7 +72,6 @@ report 33065687 "Disciplinary Details Preview"
             }
         }
     }
-    var
-        SLNo: Integer;
-        PrevHRMSID: Code[20];
+    var SLNo: Integer;
+    PrevHRMSID: Code[20];
 }

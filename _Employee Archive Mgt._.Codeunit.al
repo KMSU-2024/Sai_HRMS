@@ -137,7 +137,7 @@ codeunit 33065490 "Employee Archive Mgt." //SS07OCT c
     begin
         //FinUpgIncr.TestField("Application file"); //ss16oct - ensure document uploaded before saving
         // Rec.Validate("Date of application upload", CreateDateTime(); //ss16oct - convert Date to DateTime
-        FinUpgIncr."Date of application upload":=CreateDateTime(WorkDate(), 0T); //ss16oct
+        FinUpgIncr."Date of application upload":=WorkDate(); //ss16oct
         FinUpgIncr.Validate("Status", FinUpgIncr.Status::Applied); //ss16oct
         FinUpgIncr."IsConfirmed":=false; //ss16oct
         if FinUpgIncr."Entry No." = 0 then begin
@@ -170,7 +170,7 @@ codeunit 33065490 "Employee Archive Mgt." //SS07OCT c
         // Save (if not yet inserted) //ss16oct
         if FinUpgUpdate."Entry No." = 0 then begin
             // Rec.Validate("Date of application upload", WorkDate());
-            FinUpgUpdate."Date of application upload":=CreateDateTime(WorkDate(), 0T); //ss16oct
+            FinUpgUpdate."Date of application upload":=WorkDate(); //ss16oct
             FinUpgUpdate."Increment Amount":=IncrementAmount;
             FinUpgUpdate."Type of increment":=TypeofIncrement;
             FinUpgUpdate.Validate("Status", FinUpgUpdate.Status::Applied);
@@ -206,7 +206,7 @@ codeunit 33065490 "Employee Archive Mgt." //SS07OCT c
             hist."Current Station":=FinUpgUpdate."Current Station";
             hist."Application file":=FinUpgUpdate."Application file";
             hist."Application file name":=FinUpgUpdate."Application file name";
-            hist."Date of application upload":=CreateDateTime(WorkDate(), 0T); //ss16oct
+            hist."Date of application upload":=WorkDate(); //ss16oct
             hist."Effective Date Of MACP":=FinUpgUpdate."Effective Date Of MACP";
             //ss16oct start
             hist."Type of increment":=FinUpgUpdate."Type of increment";

@@ -37,7 +37,7 @@ page 33065976 "Financial Upg - Increment List" //ss16oct
                 {
                     ApplicationArea = All;
                 } //ss16oct
-                field("Type of increment"; "Type of increment")//megha 3-11-25
+                field("Type of increment"; "Type of increment") //megha 3-11-25
                 {
                     ApplicationArea = all;
                 }
@@ -116,16 +116,17 @@ page 33065976 "Financial Upg - Increment List" //ss16oct
                     HistPage.Run(); // opens the confirmed increment history //ss16oct
                 end;
             }
-            action(Test)
-            {
-                ApplicationArea = all;
-                trigger OnAction()
-                var
-                    EmpDiaryCodeunit: Codeunit "Employee Diary Summary Mgt";
-                begin
-                    EmpDiaryCodeunit.LoadFinancialUpgHistData('43000069');
-                end;
-            }
+            /* action(Test)
+             {
+                 ApplicationArea = all;
+
+                 trigger OnAction()
+                 var
+                     EmpDiaryCodeunit: Codeunit "Employee Diary Summary Mgt";
+                 begin
+                     EmpDiaryCodeunit.LoadFinancialUpgHistData('43000069');
+                 end;
+             }*/
         }
     }
     trigger OnOpenPage()

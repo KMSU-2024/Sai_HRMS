@@ -10,27 +10,27 @@ page 33065494 "Employee Lookup List" //SS07OCT c
         {
             repeater(Group)
             {
-                field("Employee No."; rec."Employee No.")
+                field("Employee No.";rec."Employee No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Employment Name"; rec."Employment Name")
+                field("Employment Name";rec."Employment Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Designation"; rec.Designation)
+                field("Designation";rec.Designation)
                 {
                     ApplicationArea = All;
                 }
-                field("Current Station"; rec."Current Station")
+                field("Current Station";rec."Current Station")
                 {
                     ApplicationArea = All;
                 }
-                field("Employment Status"; rec."Employment Status")
+                field("Employment Status";rec."Employment Status")
                 {
                     ApplicationArea = All;
                 }
-                field("Company Name"; Rec."Company Name")
+                field("Company Name";Rec."Company Name")
                 {
                 }
             }

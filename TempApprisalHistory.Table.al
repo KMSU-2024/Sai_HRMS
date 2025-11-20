@@ -1,58 +1,134 @@
-table 33066436 TempApprisalHistory //SS07OCT c
+table 33066436 "Employee Appraisal Buffer" //SS03NOV
+
+{
+
+    Caption = 'Employee Appraisal Buffer';
+
+    DataClassification = ToBeClassified;
+
+    fields
+
+    {
+
+        field(1; "HRMS ID"; Code[20])
+
+        {
+
+            Caption = 'HRMS ID';
+
+        }
+
+        field(2; "Company Name"; Text[100])
+
+        {
+
+            Caption = 'Company Name';
+
+        }
+
+        field(3; "Entry No."; Integer)
+
+        {
+
+            Caption = 'Entry No.';
+
+        }
+
+        field(4; "Employee Name"; Text[90])
+
+        {
+
+            Caption = 'Employee Name';
+
+        }
+
+        field(5; "Designation"; Text[30])
+
+        {
+
+            Caption = 'Designation';
+
+        }
+
+        field(6; "Department"; Text[30])
+
+        {
+
+            Caption = 'Department';
+
+        }
+
+        field(7; "Academic Year"; Code[10])
+
+        {
+
+            Caption = 'Academic Year';
+
+        }
+
+        field(8; "Performance Appraisal Review"; Enum "PerformanceRatingEnum")
+
+        {
+
+            Caption = 'Performance Appraisal Review';
+
+        }
+
+        field(9; "Modified By"; Code[50])
+
+        {
+
+            Caption = 'Modified By';
+
+        }
+
+        field(10; "Modified Date Time"; DateTime)
+
+        {
+
+            Caption = 'Modified Date Time';
+
+        }
+
+    }
+
+    keys
+
+    {
+
+        key(PK; "HRMS ID", "Company Name", "Entry No.") { Clustered = true; }
+
+    }
+
+}
+
+
+/* table 70931 TempApprisalHistory //SS07OCT
 {
     DataClassification = ToBeClassified;
     TableType = Temporary;
 
     fields
     {
-        field(9; "Line ID"; Integer)
-        {
-        }
-        field(10; "Company Name"; Text[100])
-        {
-        }
-        field(11; "Entry No"; Integer)
-        {
-        }
-        field(1; "HRMS ID"; Code[20])
-        {
-            DataClassification = CustomerContent;
-        }
-        field(2; Name; Text[90])
-        {
-            DataClassification = CustomerContent;
-        }
-        field(3; Designation; Text[30])
-        {
-            DataClassification = CustomerContent;
-        }
-        field(4; Department; Text[30])
-        {
-            DataClassification = CustomerContent;
-        }
+        field(9; "Line ID"; Integer) { }
+        field(10; "Company Name"; Text[100]) { }
+        field(11; "Entry No"; Integer) { }
+        field(1; "HRMS ID"; Code[20]) { DataClassification = CustomerContent; }
+        field(2; Name; Text[90]) { DataClassification = CustomerContent; }
+        field(3; Designation; Text[30]) { DataClassification = CustomerContent; }
+        field(4; Department; Text[30]) { DataClassification = CustomerContent; }
         field(5; "Academic Year"; Code[10])
         {
             DataClassification = CustomerContent;
             TableRelation = "Academic Year".Code;
         }
-        field(6; "Performance Appraisal Review"; Enum PerformanceRatingEnum)
-        {
-            DataClassification = CustomerContent;
-        }
-        field(7; "Modified By"; Code[50])
-        {
-            DataClassification = SystemMetadata;
-        }
-        field(8; "Modified Date Time"; DateTime)
-        {
-            DataClassification = SystemMetadata;
-        }
+        field(6; "Performance Appraisal Review"; Enum PerformanceRatingEnum) { DataClassification = CustomerContent; }
+        field(7; "Modified By"; Code[50]) { DataClassification = SystemMetadata; }
+        field(8; "Modified Date Time"; DateTime) { DataClassification = SystemMetadata; }
     }
+
     keys
     {
-        key(PK; "Line ID")
-        {
-            Clustered = true;
-        }
+        key(PK; "Line ID") { Clustered = true; }
     }
-}
+} */

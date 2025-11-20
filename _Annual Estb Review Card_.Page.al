@@ -11,83 +11,82 @@ page 33065751 "Annual Estb Review Card"
         {
             group(General)
             {
-                field("Sl.No"; "Sl.No")
+                field("Sl.No";"Sl.No")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Establishment Type"; "Establishment Type")
+                field("Establishment Type";"Establishment Type")
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
                 }
-                field("Post Group"; "Post Group")
+                field("Post Group";"Post Group")
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
                 }
-                Field("Dept./Trade/Section"; "Dept./Trade/Section")
+                Field("Dept./Trade/Section";"Dept./Trade/Section")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Designation; Designation)
+                field(Designation;Designation)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Pay Scale GP"; "Pay Scale GP")
+                field("Pay Scale GP";"Pay Scale GP")
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
                 }
-                field("Pay scale 6th pay"; "Pay scale 6th pay")
+                field("Pay scale 6th pay";"Pay scale 6th pay")
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
                 }
-                field("Sanctioned Strength"; "Sanctioned Strength")
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-
-                }
-                field("Persons in Position "; "Persons in Position ")
+                field("Sanctioned Strength";"Sanctioned Strength")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Vacancy Position "; "Vacancy Position ")
+                field("Persons in Position ";"Persons in Position ")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                FIELD("Excess Post"; "Excess Post")
+                field("Vacancy Position ";"Vacancy Position ")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                FIELD("Excess Post";"Excess Post")
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
                 }
-                field("Academic Year"; "Academic Year")
+                field("Academic Year";"Academic Year")
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
                 }
-                Field(Remark; Remark)
+                Field(Remark;Remark)
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
                 }
-                field("Institution Name"; "Institution Name")
+                field("Institution Name";"Institution Name")
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
                 }
-                field("Employee Catagory"; "Employee Catagory")
+                field("Employee Catagory";"Employee Catagory")
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
                 }
-                field("Pay Scale level 7th pay"; "Pay Scale level 7th pay")
+                field("Pay Scale level 7th pay";"Pay Scale level 7th pay")
                 {
                     ApplicationArea = All;
                     Editable = EditNow;
@@ -100,7 +99,7 @@ page 33065751 "Annual Estb Review Card"
     }
     actions
     {
-        area(Processing)//megha start 9-10-25
+        area(Processing) //megha start 9-10-25
         {
             action(Update)
             {
@@ -108,22 +107,19 @@ page 33065751 "Annual Estb Review Card"
 
                 trigger OnAction();
                 begin
-                    EditNow := true;
+                    EditNow:=true;
                 end;
             }
             action("View History")
             {
                 ApplicationArea = all;
                 RunObject = page "Annual Estb History";
-                RunPageLink = "Sl.No" = field("Sl.No");
+                RunPageLink = "Sl.No"=field("Sl.No");
             }
-        }//megha 9-10-25 end
+        } //megha 9-10-25 end
     }
-    trigger OnOpenPage()
-    begin
-        EditNow := false;
+    trigger OnOpenPage()begin
+        EditNow:=false;
     end;
-
-    var
-        EditNow: Boolean;
+    var EditNow: Boolean;
 }

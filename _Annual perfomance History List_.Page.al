@@ -1,7 +1,6 @@
 page 33066425 "Annual perfomance History List"
 {
     ApplicationArea = All;
-
     // Start anmol 288 jan 25 new Caption added
     //Caption = 'Annual Internal perfomance review History List';
     PageType = List;
@@ -17,27 +16,27 @@ page 33066425 "Annual perfomance History List"
         {
             repeater(General)
             {
-                field("HRMS ID"; Rec."HRMS ID")
+                field("HRMS ID";Rec."HRMS ID")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the HRMS ID field.';
                 }
-                field(Name; Rec.Name)
+                field(Name;Rec.Name)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Name field.';
                 }
-                field(Designation; Rec.Designation)
+                field(Designation;Rec.Designation)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Designation field.';
                 }
-                field(Department; Rec.Department)
+                field(Department;Rec.Department)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Department field.';
                 }
-                field("Academic Year"; Rec."Academic Year")
+                field("Academic Year";Rec."Academic Year")
                 {
                     // Caption = 'Financial Year';
                     ApplicationArea = All;
@@ -50,7 +49,7 @@ page 33066425 "Annual perfomance History List"
                 //     ToolTip = 'Specifies the value of the Performance Rating field.';
                 // }
                 // Added below fields
-                field("Performance Appraisal Review"; Rec."Performance Appraisal Review")
+                field("Performance Appraisal Review";Rec."Performance Appraisal Review")
                 {
                     ApplicationArea = All;
                 }
@@ -67,7 +66,7 @@ page 33066425 "Annual perfomance History List"
                 ApplicationArea = All;
                 Image = History;
                 RunObject = page "Annual Performance History";
-                RunPageLink = "HRMS ID" = field("HRMS ID");
+                RunPageLink = "HRMS ID"=field("HRMS ID");
             }
         }
     }

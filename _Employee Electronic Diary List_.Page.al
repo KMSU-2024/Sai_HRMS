@@ -1,19 +1,32 @@
 page 33065493 "Employee Electronic Diary List" //SS07OCT c
+//page 70928 "Employee Electronic Diary List" //SS07OCT
+
 {
+
     PageType = List;
+
     SourceTable = Employee;
     SourceTableView = where(Status = const(Active), "SLCM Employee" = const(false));
     // SourceTableTemporary=true;
+
     UsageCategory = Lists;
     ApplicationArea = all;
+
     Caption = 'Employee Electronic Diary';
 
+
     layout
+
     {
+
         area(content)
+
         {
+
             group(Filters)
+
             {
+
                 /*  field(HRMSIdFilter; HRMSIdFilter)
 
                   {
@@ -41,67 +54,86 @@ page 33065493 "Employee Electronic Diary List" //SS07OCT c
 
                     trigger OnValidate()
                     begin
-                        if HRMSIDFilter <> '' then CurrPage.SetSelectionFilter(Rec);
+                        if HRMSIDFilter <> '' then
+                            CurrPage.SetSelectionFilter(Rec);
+
                         // Apply filter on the source table
                         Rec.SetFilter("No.", HRMSIDFilter);
                         CurrPage.Update(false);
                     end;
                 }
+
                 field(EmployeeNameFilter; EmployeeNameFilter)
+
                 {
+
                     Caption = 'Employee Name Filter';
+
                     ApplicationArea = All;
 
                     trigger OnLookup(var Text: Text): Boolean
+
                     var
+
                         EmpHist: Record "Employee History";
+
                     begin
+
                         EmpHist.Reset();
-                        if EmployeeNameFilter <> '' then EmpHist.SetFilter("Employment Name", '%1*', EmployeeNameFilter);
+
+                        if EmployeeNameFilter <> '' then
+                            EmpHist.SetFilter("Employment Name", '%1*', EmployeeNameFilter);
+
                         if Page.RunModal(Page::"Employee Lookup List", EmpHist) = Action::LookupOK then begin
+
                             EmployeeNameFilter := EmpHist."Employment Name";
+
                             ApplySearch();
+
                             CurrPage.Update(false);
+
                         end;
+
                         exit(true);
+
                     end;
 
                     trigger OnValidate()
+
                     begin
+
                         ApplySearch();
+
                         CurrPage.Update(false);
+
                     end;
+
                 }
+
             }
+
             repeater(Group)
+
             {
-                field("Employee No."; rec."No.")
-                {
-                    ApplicationArea = All;
-                }
-                field("Employment Name"; rec."First Name")
-                {
-                    ApplicationArea = All;
-                }
-                field("Designation"; rec.Designation)
-                {
-                    ApplicationArea = All;
-                }
-                field("Employment Status"; rec."Employment Status")
-                {
-                    ApplicationArea = All;
-                }
-                field("Current Station"; rec."Current Station")
-                {
-                    ApplicationArea = All;
-                }
-                field("Deployment Location"; rec."Deployment Location")
-                {
-                    ApplicationArea = All;
-                }
+
+                field("Employee No."; rec."No.") { ApplicationArea = All; }
+
+                field("Employment Name"; rec."First Name") { ApplicationArea = All; }
+
+                field("Designation"; rec.Designation) { ApplicationArea = All; }
+
+                field("Employment Status"; rec."Employment Status") { ApplicationArea = All; }
+
+                field("Current Station"; rec."Current Station") { ApplicationArea = All; }
+
+                field("Deployment Location"; rec."Deployment Location") { ApplicationArea = All; }
+
             }
+
         }
+
         area(factboxes)
+
         {
             /* part(employeehis; "Employee History List part")
              {
@@ -146,151 +178,232 @@ page 33065493 "Employee Electronic Diary List" //SS07OCT c
 
 
              }*/
-            part(CrossTrainingHist; CrossCompanyTrainingHist)
+
+            ////SS03NOV
+
+            part(CrossTrainingHist; CrossCompanyTrainingHist) //api created
+
             {
-                //SubPageLink = "HRMS ID" = field("No.");
+
+
             }
-            part(CrossPromtHist; CrossCompanyPromotionHist)
+            part(CrossPromtHist; CrossCompanyPromotionHist)//api created
             {
                 //  SubPageLink = "HRMS ID" = field("No.");
+
+
             }
-            part(CrossCompanyEmployeeHist; CrossCompanyEmployeeHist)
+            part(CrossCompanyEmployeeHist; CrossCompanyEmployeeHist)//api created
             {
+
             }
-            part(CrossCompanyAchievements; CrossCompanyAchievements)
+            part(CrossCompanyAchievements; CrossCompanyAchievements) //api created
             {
+
             }
-            part(CrossCompanyTransferHist; CrossCompanyTransferHist)
+            part(CrossCompanyTransferHist; CrossCompanyTransferHist) //api created
             {
+
             }
-            part(CrossCompanyFinancialUpgHist; CrossCompanyFinancialUpgHist)
+            part(CrossCompanyFinancialUpgHist; CrossCompanyFinancialUpgHist)//api created
             {
                 //  SubPageLink = "HRMS Id" = field("No.");
+
+
             }
-            part(CrossApprisalHist; CrossApprisalHist)
+            part(CrossApprisalHist; CrossApprisalHist)//`api created
             {
+
             }
+            //SS03NOV
+
         }
+
     }
+
     actions
+
     {
+
         area(processing)
+
         {
+
             action(ShowInactiveAction)
+
             {
+
                 Caption = 'Show Inactive Employees';
+
                 Visible = not ShowInactive;
 
                 trigger OnAction()
+
                 begin
+
                     ShowInactive := true;
+
                     ApplyFilters();
+
                     CurrPage.Update(false);
+
                 end;
+
             }
+
             action(HideInactiveAction)
+
             {
+
                 Caption = 'Hide Inactive Employees';
+
                 Visible = ShowInactive;
 
                 trigger OnAction()
+
                 begin
+
                     ShowInactive := false;
+
                     ApplyFilters();
+
                     CurrPage.Update(false);
+
                 end;
+
             }
+
+
             action(RefreshCounts)
+
             {
+
                 ApplicationArea = All;
+
                 Caption = 'Refresh Counts';
+
                 Image = Refresh;
+
                 Promoted = true;
+
                 PromotedCategory = Process;
 
                 trigger OnAction()
+
                 var
+
                     SummaryMgt: Codeunit "Employee Diary Summary Mgt";
+
                 begin
+
                     SummaryMgt.RecalculateSummary(UserSetup."Global Dimension 1 Code");
+
                     //   CurrPage.EmployeeSummary.PAGE.RefreshCounts(UserSetup."Global Dimension 1 Code");
+
                 end;
+
             }
+
         }
+
     }
-    /*megha 30-10-25  local procedure LoadEmployeesAcrossCompanies()
-     var
-         CompanyList: Record Company;
-         EmployeeSrc: Record Employee;
-         TempEmployee: Record Employee temporary; // use a temporary buffer
-     begin
-         Clear(Rec);
-         Clear(TempEmployee);
-         if CompanyList.FindSet() then
-             repeat
-                 EmployeeSrc.ChangeCompany(CompanyList.Name);
-                 EmployeeSrc.SetRange("No.", HRMSIdFilter);
-                 if EmployeeSrc.FindSet() then
-                     repeat
-                         TempEmployee.Init();
-                         TempEmployee.TransferFields(EmployeeSrc, true);
-                         // Make it unique by appending company name to No.
-                         TempEmployee."No." := Format(EmployeeSrc."No.") + '-' + CopyStr(CompanyList.Name, 1, 10);
-                         TempEmployee.Insert();
-                     until EmployeeSrc.Next() = 0;
-             until CompanyList.Next() = 0;
-         // Copy the result set back into Rec so the page displays it
-         Rec := TempEmployee;
-     end; */
+
+
     local procedure LoadEmployeesAcrossCompanies()
+
     var
+
         CompanyList: Record Company;
+
         EmployeeSrc: Record Employee;
-        EmployeeTarget: Record Employee;
+
+        TempEmployee: Record Employee temporary; // use a temporary buffer
+
     begin
 
-        Clear(EmployeeTarget);
+        Clear(Rec);
+
+        Clear(TempEmployee);
 
         if CompanyList.FindSet() then
             repeat
+
                 EmployeeSrc.ChangeCompany(CompanyList.Name);
+
                 EmployeeSrc.SetRange("No.", HRMSIdFilter);
 
                 if EmployeeSrc.FindSet() then
                     repeat
-                        EmployeeTarget.Init();
-                        EmployeeTarget.TransferFields(EmployeeSrc, true);
-                        EmployeeTarget."No." := Format(EmployeeSrc."No.") + '-' + CopyStr(CompanyList.Name, 1, 10);
-                        EmployeeTarget.Insert();
-                    until EmployeeSrc.Next() = 0;
-            until CompanyList.Next() = 0;
-    end;
 
+                        TempEmployee.Init();
+
+                        TempEmployee.TransferFields(EmployeeSrc, true);
+
+                        // Make it unique by appending company name to No.
+
+                        TempEmployee."No." := Format(EmployeeSrc."No.") + '-' + CopyStr(CompanyList.Name, 1, 10);
+
+                        TempEmployee.Insert();
+
+                    until EmployeeSrc.Next() = 0;
+
+            until CompanyList.Next() = 0;
+
+        // Copy the result set back into Rec so the page displays it
+
+        Rec := TempEmployee;
+
+    end;
 
     trigger OnAfterGetRecord()
-    var
-        CrossHistPage: Page CrossCompanyTrainingHist;
-    begin
-        if Rec."No." <> '' then CurrPage.CrossTrainingHist.Page.LoadData(rec."No."); //2
-        CurrPage.CrossPromtHist.Page.LoadData(rec."No."); //3
-        CurrPage.CrossCompanyEmployeeHist.Page.LoadData(rec."No."); //1
-        CurrPage.CrossCompanyAchievements.Page.LoadData(rec."No."); //4
-        CurrPage.CrossCompanyTransferHist.Page.LoadData(rec."No."); //5;
-        CurrPage.CrossCompanyFinancialUpgHist.Page.LoadData(Rec."No.");
-        CurrPage.CrossApprisalHist.Page.LoadData(Rec."No.");
-    end;
 
     var
+
+        CrossHistPage: Page CrossCompanyTrainingHist;
+        cu: Codeunit "Training Buffer Mgt";
+
+    begin
+
+        if Rec."No." <> '' then
+            if Rec."No." <> '' then begin
+                cu.LoadTrainingAcrossCompanies1(Rec."No.");
+
+                CurrPage.CrossTrainingHist.Page.LoadData(rec."No.");//2
+                CurrPage.CrossPromtHist.Page.LoadData(rec."No.");//3
+                CurrPage.CrossCompanyEmployeeHist.Page.LoadData(rec."No.");//1
+                CurrPage.CrossCompanyAchievements.Page.LoadData(rec."No.");//4
+                CurrPage.CrossCompanyTransferHist.Page.LoadData(rec."No.");//5;
+                CurrPage.CrossCompanyFinancialUpgHist.Page.LoadData(Rec."No.");
+                CurrPage.CrossApprisalHist.Page.LoadData(Rec."No.");
+            end;
+
+    end;
+
+
+
+
+
+    var
+
         UserSetup: Record "User Setup";
+
         HRMSIdFilter: Code[20];
+
         EmployeeNameFilter: Text[100];
+
         ShowInactive: Boolean;
+
     //   trigger OnOpenPage()
+
     //  begin
+
     //if UserSetup.Get(UserId) then
     //  ApplyFilters();
     //  LoadEmployeesAcrossCompanies();
+
+
     // CurrPage.EmployeeSummary.PAGE.RefreshCounts(UserSetup."Global Dimension 1 Code");
+
     // end;
     /*  local procedure HasPermission(PermissionSetCode: Code[50]): Boolean
 
@@ -319,105 +432,167 @@ page 33065493 "Employee Electronic Diary List" //SS07OCT c
 
       end;*/
     local procedure HasPermission(PermissionSetCode: Code[50]): Boolean
+
     var
+
         PermissionSet: Record "Permission Set";
+
         UserPermission: Record "Access Control";
+
     begin
+
         // Check if permission set exists
+
         if PermissionSet.Get(PermissionSetCode) then begin
+
             // Look for user with this permission set assigned globally (Company = '')
+
             UserPermission.SetRange("User Security ID", UserSecurityId());
+
             UserPermission.SetRange("Role ID", PermissionSetCode);
+
             UserPermission.SetRange("Company Name", ''); // only global
-            if UserPermission.FindFirst() then exit(true);
+
+            if UserPermission.FindFirst() then
+                exit(true);
+
         end;
+
         exit(false);
+
     end;
 
+
+
     trigger OnOpenPage() //SS08OCT
+
     var
+
         PermissionSetLbl: Label 'EMPLOYEE_E_DIARY', Locked = true;
+
     begin
         UserSetup.Get(UserId);
         IF UserSetup."E-Dairy" = false then begin
             Error('Access Denied! You do not have permission to view Employee Electronic Diary in %1 company. Please contact your administrator.', CompanyName);
             CurrPage.Close();
         end;
+
+
         // Special rule: DTET company always allowed
+
         /*   if CompanyName = 'DTE&T, Odisha' then begin
-                   //  ApplyFilters();
+               //  ApplyFilters();
 
 
-                   LoadEmployeesAcrossCompanies();
+               LoadEmployeesAcrossCompanies();
 
-               end else begin
+           end else begin
 
-                   // In other companies, enforce permission check
+               // In other companies, enforce permission check
 
-                   if not HasPermission(PermissionSetLbl) then
-                       Error(
+               if not HasPermission(PermissionSetLbl) then
+                   Error(
 
-                         'Access Denied! You do not have permission to view Employee Electronic Diary in %1 company. Please contact your administrator.',
+                     'Access Denied! You do not have permission to view Employee Electronic Diary in %1 company. Please contact your administrator.',
 
-                         CompanyName) else
-                       ApplyFilters();
+                     CompanyName) else
+                   ApplyFilters();
 
-                   LoadEmployeesAcrossCompanies();
-
-
-               end;
+               LoadEmployeesAcrossCompanies();
 
 
-               // Refresh summary counts if available
-
-               if UserSetup.Get(UserId) then
-                   LoadEmployeesAcrossCompanies();
+           end;
 
 
-               // CurrPage.EmployeeSummary.PAGE.RefreshCounts(UserSetup."Global Dimension 1 Code");
-               if HRMSIDFilter <> '' then
-                   Rec.SetFilter("No.", HRMSIDFilter);
-                   */
+           // Refresh summary counts if available
+
+           if UserSetup.Get(UserId) then
+               LoadEmployeesAcrossCompanies();
+
+
+           // CurrPage.EmployeeSummary.PAGE.RefreshCounts(UserSetup."Global Dimension 1 Code");
+           if HRMSIDFilter <> '' then
+               Rec.SetFilter("No.", HRMSIDFilter);
+               */
+
     end;
+
+
+
+
 
     local procedure ApplyFilters()
+
     begin
-        if CompanyName = 'DTE&T_Odisha' then exit; // DTET company - no filters
+
+        if CompanyName = 'DTE&T_Odisha' then
+            exit; // DTET company - no filters
+
         rec.SetRange("Current Station", UserSetup."Global Dimension 1 Code");
-        if not ShowInactive then rec.SetRange("Employment Status", rec."Employment Status"::Regular);
+
+        if not ShowInactive then
+            rec.SetRange("Employment Status", rec."Employment Status"::Regular);
+
     end;
 
+
+
     local procedure ApplySearch()
+
     var
+
         EmpRec: Record Employee;
+
     begin
+
         // HRMS ID filter
+
         if HRMSIdFilter <> '' then begin
+
             EmpRec.Reset();
+
             EmpRec.SetRange("No.", HRMSIdFilter);
+
             if not EmpRec.FindFirst() then begin
+
                 Error('No employee found with HRMS ID %1.', HRMSIdFilter);
+
             end;
             ClearSourceTableView();
+
             // If record exists, apply filter
+
             Rec.SetRange("No.", HRMSIdFilter);
+
             // Remove SourceTableView filter (so it shows even inactive employee)
+
             Rec.SetRange(Status);
-        end
-        else begin
+
+        end else begin
+
             Rec.SetRange("No.");
+
         end;
+
         // Employee Name filter (contains search, case-insensitive)
+
         if EmployeeNameFilter <> '' then
             Rec.SetFilter("First Name", EmployeeNameFilter)
+
         else
             Rec.SetRange("First Name");
+
     end;
 
     local procedure ClearSourceTableView()
     begin
         // Remove the filters applied by SourceTableView
-        Rec.SetRange(Status); // Clears Status filter (Active only)
-        Rec.SetRange("SLCM Employee"); // Clears SLCM Employee filter
+        Rec.SetRange(Status);                // Clears Status filter (Active only)
+        Rec.SetRange("SLCM Employee");       // Clears SLCM Employee filter
     end;
+
+
 }
+
+
+

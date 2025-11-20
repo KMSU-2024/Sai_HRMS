@@ -268,9 +268,6 @@ page 33065736 "Employee Training Input"
                     CurrPage.Close();
                 end;
             } */
-
-
-
     actions
     {
         area(Processing)
@@ -425,63 +422,64 @@ page 33065736 "Employee Training Input"
             action(Test)
             {
                 ApplicationArea = all;
+
                 trigger OnAction()
                 var
                     EmpSummary: Codeunit "Employee Diary Summary Mgt";
                 begin
-                    EmpSummary.LoadFinancialUpgHistData('43000069');
+                    // EmpSummary.LoadFinancialUpgHistData('43000069');
                 end;
             }
             /*    action(ViewTrainingHistory)
-                   {
-                       Caption = 'View Training History';
-                       ApplicationArea = All;
-                       Image = History;
-                       RunObject = page "Training History List";
-                       RunPageLink = "HRMS ID" = field("HRMS ID");
-                   } */
+                       {
+                           Caption = 'View Training History';
+                           ApplicationArea = All;
+                           Image = History;
+                           RunObject = page "Training History List";
+                           RunPageLink = "HRMS ID" = field("HRMS ID");
+                       } */
             /*      action(Submit) //1.4 b
-                     {
-                         ApplicationArea = All;
-                         Promoted = true;
-                         PromotedIsBig = true;
-                         Caption = 'Submit';
-                         Image = Save;
-                         ToolTip = 'Submit a new training record.';
+                         {
+                             ApplicationArea = All;
+                             Promoted = true;
+                             PromotedIsBig = true;
+                             Caption = 'Submit';
+                             Image = Save;
+                             ToolTip = 'Submit a new training record.';
 
-                         trigger OnAction()
-                         var
-                             PermanentRec: Record "Employee Training";
-                             MissingFieldErr: Label 'Please fill in all required fields: %1.';
-                             NoDocumentErr: Label 'A document must be uploaded to submit the record.';
-                             DuplicateErr: Label 'A record for HRMS ID %1 already exists. Use Update to modify it.', Comment = '%1 = HRMS ID';
-                             MissingFields: Text;
-                         begin
-                             // Check for existing record
-                               PermanentRec.SetRange("HRMS ID", Rec."HRMS ID");
-                             //  if PermanentRec.FindFirst() then Error(DuplicateErr, Rec."HRMS ID");
-                             // Validate required fields
-                             MissingFields := '';
-                             if Rec."HRMS ID" = '' then MissingFields += 'HRMS ID, ';
-                             if Rec."Course Name" = '' then MissingFields += 'Course Name, ';
-                             if Rec."Start Date" = 0D then MissingFields += 'Start Date, ';
-                             if Rec.EndDate = 0D then MissingFields += 'End Date, ';
-                             if MissingFields <> '' then Error(MissingFieldErr, MissingFields);
-                             // Validate document upload
-                             if not Rec.Certificate.HasValue() then Error(NoDocumentErr);
-                             // Insert into permanent table
-                             PermanentRec.Init();
-                             PermanentRec.TransferFields(Rec);
-                             PermanentRec."Modified By" := UserId;
-                             PermanentRec."Modified Date Time" := CurrentDateTime;
-                             PermanentRec.Insert(true);
-                             Rec.Delete();
-                             Commit();
-                             Message('Training record submitted for HRMS ID: %1', Rec."HRMS ID");
-                             CurrPage.Close();
-                         end;
-                     }
-              */
+                             trigger OnAction()
+                             var
+                                 PermanentRec: Record "Employee Training";
+                                 MissingFieldErr: Label 'Please fill in all required fields: %1.';
+                                 NoDocumentErr: Label 'A document must be uploaded to submit the record.';
+                                 DuplicateErr: Label 'A record for HRMS ID %1 already exists. Use Update to modify it.', Comment = '%1 = HRMS ID';
+                                 MissingFields: Text;
+                             begin
+                                 // Check for existing record
+                                   PermanentRec.SetRange("HRMS ID", Rec."HRMS ID");
+                                 //  if PermanentRec.FindFirst() then Error(DuplicateErr, Rec."HRMS ID");
+                                 // Validate required fields
+                                 MissingFields := '';
+                                 if Rec."HRMS ID" = '' then MissingFields += 'HRMS ID, ';
+                                 if Rec."Course Name" = '' then MissingFields += 'Course Name, ';
+                                 if Rec."Start Date" = 0D then MissingFields += 'Start Date, ';
+                                 if Rec.EndDate = 0D then MissingFields += 'End Date, ';
+                                 if MissingFields <> '' then Error(MissingFieldErr, MissingFields);
+                                 // Validate document upload
+                                 if not Rec.Certificate.HasValue() then Error(NoDocumentErr);
+                                 // Insert into permanent table
+                                 PermanentRec.Init();
+                                 PermanentRec.TransferFields(Rec);
+                                 PermanentRec."Modified By" := UserId;
+                                 PermanentRec."Modified Date Time" := CurrentDateTime;
+                                 PermanentRec.Insert(true);
+                                 Rec.Delete();
+                                 Commit();
+                                 Message('Training record submitted for HRMS ID: %1', Rec."HRMS ID");
+                                 CurrPage.Close();
+                             end;
+                         }
+                  */
         }
     }
     var
@@ -503,7 +501,5 @@ page 33065736 "Employee Training Input"
         Tempblob: Codeunit "Temp Blob";
         Instream1: InStream;
         Outstream1: OutStream;
-
-        IsUpdateMode: Boolean;//SS07OCT
-
+        IsUpdateMode: Boolean; //SS07OCT
 }
