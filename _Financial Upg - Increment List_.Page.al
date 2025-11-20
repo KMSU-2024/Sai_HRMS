@@ -37,17 +37,19 @@ page 33065976 "Financial Upg - Increment List" //ss16oct
                 {
                     ApplicationArea = All;
                 } //ss16oct
-                field("Type of increment"; "Type of increment")//megha 3-11-25
+                field("Type of increment"; "Type of increment") //megha 3-11-25
                 {
                     ApplicationArea = all;
                 }
                 field("Type"; Rec."Type")
                 {
                     ApplicationArea = All;
+                    Visible = false; //ssnov20
                 } //ss16oct
                 field("Effective Date Of MACP"; Rec."Effective Date Of MACP")
                 {
                     ApplicationArea = All;
+                    Caption = 'Effective Date of Increment';//ssnov20
                 } //ss16oct
                 field("Increment Amount"; Rec."Increment Amount")
                 {
@@ -57,14 +59,21 @@ page 33065976 "Financial Upg - Increment List" //ss16oct
                 {
                     ApplicationArea = All;
                 } //ss16oct
-                field("IsConfirmed"; Rec."IsConfirmed")
+                field("Application file name"; "Application file name")
                 {
-                    ApplicationArea = All;
-                } //ss16oct
+                    ApplicationArea = all;
+                }//ssnov20
                 field("Date of application upload"; Rec."Date of application upload")
                 {
                     ApplicationArea = All;
                 } //ss16oct
+
+
+                field("IsConfirmed"; Rec."IsConfirmed")
+                {
+                    ApplicationArea = All;
+                } //ss16oct
+
             }
         }
     }
@@ -92,6 +101,7 @@ page 33065976 "Financial Upg - Increment List" //ss16oct
                 ApplicationArea = All;
                 Promoted = true;
                 PromotedCategory = New;
+                Visible = false; //ssnov20
 
                 trigger OnAction()
                 var
@@ -116,7 +126,17 @@ page 33065976 "Financial Upg - Increment List" //ss16oct
                     HistPage.Run(); // opens the confirmed increment history //ss16oct
                 end;
             }
+            /* action(Test)
+             {
+                 ApplicationArea = all;
 
+                 trigger OnAction()
+                 var
+                     EmpDiaryCodeunit: Codeunit "Employee Diary Summary Mgt";
+                 begin
+                     EmpDiaryCodeunit.LoadFinancialUpgHistData('43000069');
+                 end;
+             }*/
         }
     }
     trigger OnOpenPage()

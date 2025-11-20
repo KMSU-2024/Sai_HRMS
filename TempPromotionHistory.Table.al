@@ -25,7 +25,7 @@ table 33066440 "Promotion History Buffer" //SS17nov
         {
             Caption = 'To Designation';
         }
-        field(6; "Promotion Order Date"; Date)
+        field(6; "Promotion Order Date"; date)
         {
             Caption = 'Promotion Order Date';
         }

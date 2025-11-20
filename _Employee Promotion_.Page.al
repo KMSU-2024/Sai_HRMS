@@ -25,7 +25,7 @@ page 33065733 "Employee Promotion"
                         Employee.SetRange("No.", HRMSID);
                         If Employee.FindFirst() then begin
                             Name := Employee."First Name" + ' ' + Employee."Middle Name" + ' ' + Employee."Last Name";
-                            CurrDesignation := Employee.Designation;
+                            CurrDesignation := Employee.Designation;//ssnov20
                         end;
                     end;
                 }
@@ -59,6 +59,12 @@ page 33065733 "Employee Promotion"
                 {
                     ApplicationArea = All;
                     Caption = 'Promotion Order Issuing Authority';
+                }
+                field(fileName; fileName)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Promotion Order File Name';
+                    Editable = false; //ssnov20
                 }
             }
         }
@@ -101,7 +107,7 @@ page 33065733 "Employee Promotion"
                     end;
                 }
             }
-            action(Submit)//SS07OCT
+            action(Submit) //SS07OCT
             {
                 ApplicationArea = All;
                 Promoted = true;
@@ -119,6 +125,7 @@ page 33065733 "Employee Promotion"
                         PromotionHist."From Designation" := CurrDesignation;
                         PromotionHist."To Designation" := ToDesignation;
                         PromotionHist."Promotion Order Date" := PromotionOrderDate;
+                        PromotionHist."Promotion Order File Name" := fileName;//ssnov20
                         PromotionHist."Letter NO" := LetterNo;
                         PromotionHist."Order Issuing Authority" := OrderIssueAuthVar;
                         PromotionHist."Modified By" := UserId; //SS07OCT
@@ -151,7 +158,7 @@ page 33065733 "Employee Promotion"
         PromotionHist: Record "Employee Promotion History";
         employee: Record 5200;
         PromotionHist1: Record "Employee Promotion History";
-        OrderIssueAuthVar: Option "DTE&T","SDTE",Principal;
+        OrderIssueAuthVar: Option " ","DTE&T","SDTE",Principal;//ssnov20
         Tempblob: Codeunit "Temp Blob";
         fileName: Text;
         Filemgm: Codeunit "File Management";

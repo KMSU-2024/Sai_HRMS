@@ -1,4 +1,4 @@
-page 33065501 CrossCompanyFinancialUpgHist //SS07OCT c
+page 33065501 CrossCompanyFinancialUpgHist //SS17Nov
 //page 70556 "CrossCompanyFinancialUpgHist" //SS03NOV
 
 {
@@ -20,15 +20,14 @@ page 33065501 CrossCompanyFinancialUpgHist //SS07OCT c
             repeater(Group)
 
             {
-                field("Entry No.";"Entry No.") { ApplicationArea = All; }
-                field("No of Versions"; Rec."No of Versions") { ApplicationArea = All; }
+                //   field("Entry No."; "Entry No.") { ApplicationArea = All; }//saiNov18
 
 
-                field("Company Name"; Rec."Company Name") { ApplicationArea = All; Caption='Institute' ;}
+                field("Company Name"; Rec."Company Name") { ApplicationArea = All; Caption = 'Institute Name'; }//saiNov18
 
                 field("HRMS ID"; Rec."HRMS ID") { ApplicationArea = All; }
+                field("Employee Name"; Rec.Name) { ApplicationArea = All; }
 
-                field("Application File Name"; Rec."Application File Name") { ApplicationArea = All; }
 
                 field("Current Station"; Rec."Current Station") { ApplicationArea = All; }
 
@@ -38,6 +37,8 @@ page 33065501 CrossCompanyFinancialUpgHist //SS07OCT c
 
 
                 field("Modified Date Time"; Rec."Modified Date Time") { ApplicationArea = All; }
+                field("Application File Name"; Rec."Application File Name") { ApplicationArea = All; }//ssnov20
+
 
             }
 

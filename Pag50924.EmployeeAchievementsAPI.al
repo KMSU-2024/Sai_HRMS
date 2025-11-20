@@ -21,7 +21,7 @@ page 33065483 "Employee Achievements API" //SS17nov
     SourceTable = "Employee Achievements Buffer";
 
     // ODataKeyFields = "HRMS ID", "Company Name", "Entry No.";
-    ODataKeyFields = "Version No.", "Company Name", "HRMS ID";
+    ODataKeyFields = "Company Name", "HRMS ID"; //ssnov20
 
 
     ApplicationArea = All;

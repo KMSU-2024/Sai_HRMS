@@ -41,7 +41,7 @@ page 33065482 "Employee History Buffer API" //SS03NOV
 
             field(HRMS_ID; Rec."HRMS ID") { Caption = 'HRMS ID'; ApplicationArea = All; }
 
-            field(First_Name; Rec."First Name") { Caption = 'First Name'; ApplicationArea = All; }
+            //field(First_Name; Rec."First Name") { Caption = 'First Name'; ApplicationArea = All; }//ssnov20
 
             field(Employee_Name; Rec."Employee Name") { Caption = 'Employee Name'; ApplicationArea = All; }
 
@@ -110,7 +110,6 @@ page 33065482 "Employee History Buffer API" //SS03NOV
 
             field(Deployment_End_Date; Rec."Deployment End Date") { Caption = 'Deployment End Date'; ApplicationArea = All; }
 
-            field(Last_Name; Rec."Last Name") { Caption = 'Last Name'; ApplicationArea = All; }
 
         }
 

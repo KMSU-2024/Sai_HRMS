@@ -1,4 +1,4 @@
-page 33065741 "Promotion History List"
+﻿page 33065741 "Promotion History List"
 {
     PageType = List;
     ApplicationArea = All;
@@ -39,9 +39,13 @@ page 33065741 "Promotion History List"
                 {
                     ApplicationArea = All;
                 }
-                field("Promotion Order File Name"; "Promotion Order File Name")//megha 18-11-25
+                field("Promotion Order File Name"; "Promotion Order File Name")//saiNov18
                 {
                     ApplicationArea = all;
+                }
+                field("Order Issuing Authority"; rec."Order Issuing Authority")//ssnov20
+                {
+                    ApplicationArea = All;//ssnov20
                 }
                 field("Letter NO"; rec."Letter NO")
                 {
@@ -114,10 +118,8 @@ page 33065741 "Promotion History List"
                 RunObject = page "Promotion History Card1"; // new card page (see below)
                 RunPageLink = "HRMS ID" = field("HRMS ID"); // Show history for selected employee
             }
-
         }
     }
-
     trigger OnAfterGetRecord()
     var
         emp: Record "Employee Promot History Arch"; //SS07OCT

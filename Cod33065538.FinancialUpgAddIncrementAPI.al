@@ -254,7 +254,7 @@ codeunit 33065488 "FinancialUpg Add Increment API"
          exit(StrSubstNo(' Increment saved successfully for HRMS ID %1 (%2 - %3). Entry No: %4.',
                          HRMSID, EmployeeName, Designation, RecApp."Entry No."));
      end;*/
-    procedure SaveIncrement(HRMSID: Code[20]; EmployeeName: Text[100]; Designation: Text[100];
+    /*procedure SaveIncrement(HRMSID: Code[20]; EmployeeName: Text[100]; Designation: Text[100];
                             IncrementAmount: Decimal; IncrementType: Option "Annual increment","Promotional increment";
                             CurrentStation: Text[100]; EffectiveDate: Date;
                             ApplicationFileName: Text[100]; ApplicationFileContent: Text): Text
@@ -331,7 +331,67 @@ codeunit 33065488 "FinancialUpg Add Increment API"
         exit(StrSubstNo('Increment saved successfully for HRMS ID %1 (Entry No. %2).', HRMSID, RecApp."Entry No."));
 
     end;
+*/
+    [ServiceEnabled] //ssnov20
+    procedure SaveIncrement(
+             HRMSID: Code[20];
+             EmployeeName: Text[100];
+             Designation: Text[100];
+             IncrementAmount: Decimal;
+             IncrementType: Option "Annual increment","Promotional increment";
+             CurrentStation: Text[100];
+             EffectiveDate: Date;
+             ApplicationFileName: Text[100];
+             ApplicationFileContent: Text
+         ): Text
+    var
+        RecApp: Record "Financial Upg Application";
+        TempBlob: Codeunit "Temp Blob";
+        InStr: InStream;
+        OutStr: OutStream;
+        Fin: Record "Financial Upg Application";
+    begin
+        Fin.Reset();
+        Fin.SetRange("HRMS ID", HRMSID);
+        if Fin.FindLast() then
+            Fin.Delete(true);
+        // Initialize new record always
+        RecApp.Init();
+        RecApp."HRMS ID" := HRMSID;
 
+        RecApp.TestField("HRMS ID");
+
+        RecApp.Validate(Name, EmployeeName);
+        RecApp.Validate(Designation, Designation);
+        RecApp.Validate("Increment Amount", IncrementAmount);
+        RecApp.Validate("Type of increment", IncrementType);
+        RecApp.Validate("Current Station", CurrentStation);
+        RecApp.Validate("Effective Date Of MACP", EffectiveDate);
+
+        RecApp."Application file name" := ApplicationFileName;
+        RecApp."Date of application upload" := WorkDate();
+        RecApp.Validate(Status, RecApp.Status::Applied);
+        RecApp."IsConfirmed" := false;
+
+        // Handle file content
+        if ApplicationFileContent <> '' then begin
+            TempBlob.CreateOutStream(OutStr);
+            OutStr.WriteText(ApplicationFileContent);
+            TempBlob.CreateInStream(InStr);
+
+            RecApp."Application file".CreateOutStream(OutStr);
+            CopyStream(OutStr, InStr);
+        end;
+
+        // 🚀 EXACT SAVE LOGIC FROM SaveNew BUTTON (NO CHANGES)
+        if RecApp."Entry No." = 0 then begin
+            RecApp.Insert(true);
+        end else begin
+            RecApp.Modify(true);
+        end;
+
+        exit(StrSubstNo('Saved interim increment (Entry No. %1).', RecApp."Entry No."));
+    end;
 
 
 

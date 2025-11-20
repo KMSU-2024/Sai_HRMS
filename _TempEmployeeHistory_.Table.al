@@ -94,6 +94,14 @@ table 33066434 "Employee History Buffer" //SS03NOV
         field(37; "Deployment End Date"; Date) { Caption = 'Deployment End Date'; }
 
         field(38; "Last Name"; Text[50]) { Caption = 'Last Name'; }
+        field(39; "Entry No"; Integer)
+        {
+
+        }
+        field(40; "Archive Date Time"; DateTime)
+        {
+
+        }
 
     }
 
@@ -102,6 +110,9 @@ table 33066434 "Employee History Buffer" //SS03NOV
     {
 
         key(PK; "HRMS ID", "Company Name", "No.") { Clustered = true; }
+        key(EntryNoKey; "Archive Date Time")
+        {
+        }
 
     }
 
