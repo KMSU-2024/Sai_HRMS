@@ -1,8 +1,8 @@
-table 33066440 "Promotion History Buffer" //SS03NOV
+table 33066440 "Promotion History Buffer" //SS17nov
 {
     Caption = 'Promotion History Buffer';
     DataClassification = ToBeClassified;
- 
+
     fields
     {
         field(1; "HRMS ID"; Code[20])
@@ -41,8 +41,12 @@ table 33066440 "Promotion History Buffer" //SS03NOV
         {
             Caption = 'Version';
         }
+        field(10; Name; Text[100])
+        {
+            Caption = 'Name';
+        }
     }
- 
+
     keys
     {
         key(PK; "HRMS ID", "Company Name", "Entry No.") { Clustered = true; }

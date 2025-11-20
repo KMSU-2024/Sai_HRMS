@@ -91,7 +91,11 @@ table 33066439 "Employee Financial Upg Buffer" //SS03NOV
             Caption = 'Modified Date Time';
 
         }
+        field(11; "Name"; Text[100])
+        {
+            Caption = 'Employee Name';
 
+        }
     }
 
     keys

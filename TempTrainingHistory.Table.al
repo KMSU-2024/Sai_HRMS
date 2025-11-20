@@ -1,11 +1,11 @@
-table 33066441 "Training History Buffer" //SS03NOV
+table 33066441 "Training History Buffer" //SS17nov
 
 {
 
     Caption = 'Training History Buffer';
 
     DataClassification = ToBeClassified;
- 
+
     fields
 
     {
@@ -15,6 +15,7 @@ table 33066441 "Training History Buffer" //SS03NOV
         {
 
             Caption = 'Entry No.';
+
 
             AutoIncrement = true;
 
@@ -67,9 +68,26 @@ table 33066441 "Training History Buffer" //SS03NOV
             Caption = 'Training Location';
 
         }
+        field(9; Name; Text[100])
+        {
+            Caption = 'Name';
+        }
+        field(10; "Start Date"; Date)
+
+        {
+
+            Caption = 'Start Date';
+
+        }
+        field(11; "Application File Name"; text[100])
+        {
+
+        }
+
+
 
     }
- 
+
     keys
 
     {
@@ -80,4 +98,4 @@ table 33066441 "Training History Buffer" //SS03NOV
 
 }
 
- 
+

@@ -50,7 +50,7 @@ table 33066436 "Employee Appraisal Buffer" //SS03NOV
 
         }
 
-        field(6; "Department"; Text[30])
+        field(6; "Department"; Text[100])
 
         {
 
